@@ -1,7 +1,7 @@
 # Phoenix-RTOS docker images
 
-These images are intendend to be used when developing Phoenix-RTOS OS and apps.
-Prebuilt images are available on [DockerHub](https://hub.docker.com/r/phoenixrtos/build)
+These images are intended to be used when developing Phoenix-RTOS OS and apps.
+Prebuilt images are available on [DockerHub](https://hub.docker.com/r/phoenixrtos/build).
 
 ## Image types
 
