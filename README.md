@@ -9,6 +9,10 @@ Prebuilt images are available on [DockerHub](https://hub.docker.com/r/phoenixrto
 
 Image with toolchains for `arm7v-a`, `armv7-m`, `ia32` and `riscv` targets.
 
+### phoenixrtos/devel
+
+Based on `phoenixrtos/build` - additional development tools added.
+
 ## Manual build and upload
 
 ```bash

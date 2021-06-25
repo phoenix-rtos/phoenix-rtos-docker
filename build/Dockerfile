@@ -1,13 +1,10 @@
 # building stage, we can use feature-rich environment from which we will copy the results into final image
 FROM ubuntu:20.04 AS build
-#FROM buildpack-deps:20.04 AS build
 
 # notes:
 #  - each RUN/COPY creates new docker layer, try to keep them to the minimum
 #  - multistage build doesn't give us any advantage (we need gcc/libc-dev in the final image also)
 
-
-# TODO: change
 MAINTAINER Phoenix Systems DevOps Team
 
 # additional packets needed for toolchain compilation
@@ -21,6 +18,7 @@ RUN apt-get update && \
         bzip2 \
         ca-certificates \
         g++ \
+        git \
         gcc \
         libc6-dev \
         libglib2.0-dev \
@@ -40,9 +38,8 @@ RUN apt-get update && \
 RUN set -ex; \
     mkdir -p /usr/src/phoenix && \
     cd /usr/src/phoenix && \
-    wget https://github.com/phoenix-rtos/phoenix-rtos-build/archive/master.zip && \
-    unzip master.zip && \
-    cd phoenix-rtos-build-master/toolchain/ && \
+    git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.git && \
+    cd phoenix-rtos-project/phoenix-rtos-build/toolchain/ && \
     ./build-toolchain.sh arm-phoenix /opt/phoenix/ && \
     ./build-toolchain.sh i386-pc-phoenix /opt/phoenix/ && \
     ./build-toolchain.sh riscv64-phoenix /opt/phoenix/ && \
@@ -58,6 +55,7 @@ RUN set -ex; \
 # mtd-utils: jffs2 image (imx6ull)
 # genext2fs: ext2 image (ia32)
 # xxd: stm32 image
+# vim-tiny: 'ex' needed for lighttpd build.sh
 
 RUN apt-get update && \
 # make sure debconf doesn't try to prompt (e.g. tzdata on Ubuntu)
@@ -67,9 +65,9 @@ RUN apt-get update && \
         bin86 \
         cpio \
         genext2fs \
-        git \
         libhidapi-dev \
         mtd-utils \
+        vim-tiny \
         xxd \
     && rm -rf /var/lib/apt/lists/*
 
