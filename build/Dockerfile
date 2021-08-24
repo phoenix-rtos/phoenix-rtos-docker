@@ -32,6 +32,9 @@ RUN apt-get update && \
         xz-utils \
     && rm -rf /var/lib/apt/lists/*
 
+# use --build-arg FORCE_REBUILD=$(date +%s) to force rebuild from this line
+ARG FORCE_REBUILD=unknown
+
 # download toolchain build script and ececute it for all platforms
 # remove build artifacts from the final image
 # make toolchain writeable to everyone, to allow USER mapping
