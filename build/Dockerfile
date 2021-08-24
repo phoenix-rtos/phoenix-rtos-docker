@@ -49,7 +49,6 @@ RUN set -ex; \
 
 
 # phoenix-rtos build dependencies
-# bcc, bin86: ia32 plo
 # cpio: kernel
 # hidapi: phoenixd
 # mtd-utils: jffs2 image (imx6ull)
@@ -61,8 +60,6 @@ RUN apt-get update && \
 # make sure debconf doesn't try to prompt (e.g. tzdata on Ubuntu)
     DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
-        bcc \
-        bin86 \
         cpio \
         genext2fs \
         libhidapi-dev \
