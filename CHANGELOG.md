@@ -1,6 +1,13 @@
 # Changelog
 
-## 20210625 (latest)
+## 20210825 (latest)
+
+* **GCC version: 9.3.0**
+* crtstuff on Cortex-M arch is relocatable
+* first step for moving libc header files `${sysroot}/usr/include` -> `${sysroot}/include`
+* phoenix-rtos-project commit: `52a3c74`
+
+## 20210625
 
 * **GCC version: 9.3.0**
 * add stage2 compiler building (incorrect `limits.h` fixed)
