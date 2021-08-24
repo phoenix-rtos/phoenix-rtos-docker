@@ -39,6 +39,7 @@ RUN set -ex; \
     mkdir -p /usr/src/phoenix && \
     cd /usr/src/phoenix && \
     git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.git && \
+    mkdir -p /opt/phoenix && (cd phoenix-rtos-project && git rev-parse --short HEAD > /opt/phoenix/git-version) && \
     cd phoenix-rtos-project/phoenix-rtos-build/toolchain/ && \
     ./build-toolchain.sh arm-phoenix /opt/phoenix/ && \
     ./build-toolchain.sh i386-pc-phoenix /opt/phoenix/ && \
