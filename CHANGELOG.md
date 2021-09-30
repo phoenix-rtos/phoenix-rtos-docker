@@ -1,6 +1,11 @@
 # Changelog
 
-## 20210825 (latest)
+## 20210930 (latest)
+* **GCC version: 9.3.0**
+* docker image is considerably smaller due to additional binaries stripping
+* phoenix-rtos-project commit: `330f76c`
+
+## 20210825
 
 * **GCC version: 9.3.0**
 * crtstuff on Cortex-M arch is relocatable
