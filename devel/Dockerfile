@@ -4,6 +4,7 @@ FROM phoenixrtos/build:latest
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
+        ca-certificates \
         python3-dev \
         python3-venv \
         python3-pip \
