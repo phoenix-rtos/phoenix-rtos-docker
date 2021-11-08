@@ -23,12 +23,21 @@ docker run --rm --privileged multiarch/qemu-user-static -p yes
 docker buildx create --name multiarch --driver docker-container --use
 docker buildx inspect --bootstrap
 
-# building will take about approximately 10 hours - after that test if it builds all TARGETs from phoenix-rtos-project
+# building will take about approximately 10 hours for arm/v7 and 2 hours for amd64 - after that test if it builds all TARGETs from phoenix-rtos-project
 # use --load flag to load image into docker but it works only for one platform
-# use --push to push multi-platform image into registry use
-docker buildx build --platform linux/arm/v7,linux/amd64 --push -t phoenixrtos/build:latest -f build/Dockerfile .
+docker buildx build --load --platform linux/arm/v7 -t phoenixrtos/build:armv7 -f build/Dockerfile .
+docker buildx build --load --platform linux/amd64 -t phoenixrtos/build:amd64 -f build/Dockerfile .
 
-# additionaly push the image one more time tagged with the current date
-docker buildx build --platform linux/arm/v7,linux/amd64 --push -t phoenixrtos/build:20211126 -f build/Dockerfile .
-```
+# push images to the docker hub repo
+docker push phoenixrtos/build:armv7
+docker push phoenixrtos/build:amd64
+
+# create manifest composed of images of different architectures
+docker manifest create phoenixrtos/build:latest phoenixrtos/build:armv7 phoenixrtos/build:amd64
+# push the image
+docker manifest push phoenixrtos/build:latest
+
+# create the same manifest with the current date
+docker manifest create phoenixrtos/build:2021116 phoenixrtos/build:armv7 phoenixrtos/build:amd64
+docker manifest push phoenixrtos/build:2021116
 
