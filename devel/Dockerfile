@@ -1,6 +1,8 @@
 FROM phoenixrtos/build:latest
 
-# download python3 and qemu
+ARG DEVEL_XILINX_PLO_VERSION=2021.2
+
+# download python3, qemu and libs to compile Xilinx qemu
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
@@ -12,6 +14,9 @@ RUN apt-get update && \
         qemu-system-i386 \
         qemu-system-misc \
         qemu-utils \
+        libgcrypt20-dev \
+        zlib1g-dev \
+        libpixman-1-dev \
         u-boot-qemu \
     && rm -rf /var/lib/apt/lists/*
 
@@ -35,6 +40,18 @@ RUN git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.g
     (cd _build/host-pc/prog.stripped && cp phoenixd psu psdisk /opt/phoenix/utils) && \
     cd .. && rm -rf phoenix-rtos-project && \
     chmod -R a+rwX /opt/phoenix/utils
+
+# install qemu from xilinx
+RUN git clone https://github.com/Xilinx/qemu.git && \
+    cd qemu && \
+    git checkout tags/xilinx_v${DEVEL_XILINX_PLO_VERSION} && \
+    git submodule update --init dtc && \
+    mkdir build && cd build && \
+    ../configure --target-list="aarch64-softmmu" --enable-fdt --disable-kvm --disable-xen --enable-gcrypt --bindir="/usr/bin" --prefix="/usr" && \
+    make && \
+    strip --strip-unneeded aarch64-softmmu/qemu-system-aarch64 && \
+    cp aarch64-softmmu/qemu-system-aarch64 /usr/bin && \
+    cd ../.. && rm -rf qemu
 
 ENV PATH="/opt/phoenix/utils:${PATH}"
 
