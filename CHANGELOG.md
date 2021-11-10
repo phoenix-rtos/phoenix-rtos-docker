@@ -1,6 +1,11 @@
 # Changelog
 
-## 20210930 (latest)
+## 20211105 (latest)
+* **GCC version: 9.3.0**
+* images are now multi-architecture (linux/arm/v7, linux/amd64)
+* phoenix-rtos-project commit: `692db63`
+
+## 20210930
 * **GCC version: 9.3.0**
 * docker image is considerably smaller due to additional binaries stripping
 * phoenix-rtos-project commit: `330f76c`
