@@ -18,7 +18,7 @@ Based on `phoenixrtos/build` - additional development tools added.
 ```bash
 # additional steps may be needed for building image - check builders using command docker buildx ls
 # run container with all archs
-docker run --rm --privileged multiarch/qemu-user-static -p yes
+docker run --rm --privileged multiarch/qemu-user-static --reset always -p yes
 # change defualt buildx container
 docker buildx create --name multiarch --driver docker-container --use
 docker buildx inspect --bootstrap
