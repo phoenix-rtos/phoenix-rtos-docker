@@ -1,6 +1,11 @@
 # Changelog
 
-## 20211105 (latest)
+## 20211115 (latest)
+* **GCC version: 9.3.0**
+* add building qemu from Xilinx
+* phoenix-rtos-project commit: `692db63`
+
+## 20211105
 * **GCC version: 9.3.0**
 * images are now multi-architecture (linux/arm/v7, linux/amd64)
 * phoenix-rtos-project commit: `692db63`
