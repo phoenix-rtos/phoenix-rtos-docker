@@ -18,6 +18,7 @@ RUN apt-get update && \
         python3-pip \
         xz-utils \
         uhubctl \
+        libatomic1 \
     && rm -rf /var/lib/apt/lists/*
 
 # install github actions runner
