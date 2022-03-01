@@ -59,6 +59,7 @@ RUN set -ex; \
 # genext2fs: ext2 image (ia32)
 # xxd: stm32 image
 # vim-tiny: 'ex' needed for lighttpd build.sh
+# cmake: needed for zlib build.sh
 
 RUN apt-get update && \
 # make sure debconf doesn't try to prompt (e.g. tzdata on Ubuntu)
@@ -70,6 +71,7 @@ RUN apt-get update && \
         mtd-utils \
         vim-tiny \
         xxd \
+        cmake \
     && rm -rf /var/lib/apt/lists/*
 
 
