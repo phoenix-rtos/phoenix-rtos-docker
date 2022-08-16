@@ -19,6 +19,7 @@ RUN apt-get update && \
         zlib1g-dev \
         libpixman-1-dev \
         u-boot-qemu \
+        gdb-multiarch \
     && rm -rf /var/lib/apt/lists/*
 
 # prepare virtual env
