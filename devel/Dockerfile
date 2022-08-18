@@ -36,9 +36,9 @@ RUN pip3 install --no-cache-dir \
 # install hostutils
 RUN git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.git && \
     cd phoenix-rtos-project && \
-    TARGET=host-pc make -C phoenix-rtos-hostutils -f Makefile.old all && \
+    TARGET=host-generic-pc make -C phoenix-rtos-hostutils -f Makefile.old all && \
     mkdir -p /opt/phoenix/utils && \
-    (cd _build/host-pc/prog.stripped && cp phoenixd psu psdisk /opt/phoenix/utils) && \
+    (cd _build/host-generic-pc/prog.stripped && cp phoenixd psu psdisk /opt/phoenix/utils) && \
     cd .. && rm -rf phoenix-rtos-project && \
     chmod -R a+rwX /opt/phoenix/utils
 
