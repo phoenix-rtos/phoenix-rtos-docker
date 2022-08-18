@@ -19,6 +19,7 @@ RUN apt-get update && \
         xz-utils \
         uhubctl \
         libatomic1 \
+        gdb-multiarch \
     && rm -rf /var/lib/apt/lists/*
 
 # install github actions runner
