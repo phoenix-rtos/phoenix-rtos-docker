@@ -20,7 +20,8 @@ RUN apt-get update && \
         libpixman-1-dev \
         u-boot-qemu \
         gdb-multiarch \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && c_rehash # needed for armv7 CA certs to work
 
 # prepare virtual env
 RUN python3 -m venv /opt/venv
@@ -60,10 +61,10 @@ RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ]; then \
 
 # install Jlink tools for 32-bit armv7 architecture and 64-bit amd architecture
 RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \
-        JLINK_FILENAME=JLink_Linux_arm; \
+        JLINK_FILENAME="JLink_Linux_arm"; \
     elif [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
-        JLINK_FILENAME=JLink_Linux_x86_64; \
-    fi \
+        JLINK_FILENAME="JLink_Linux_x86_64"; \
+    fi; \
     mkdir -p /opt/SEGGER && \
     (cd /opt/SEGGER && \
     wget --post-data "accept_license_agreement=accepted" "https://www.segger.com/downloads/jlink/${JLINK_FILENAME}.tgz" && \
