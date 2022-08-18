@@ -33,6 +33,10 @@ RUN curl -L -O https://github.com/actions/runner/releases/download/v${GH_RUNNER_
 COPY --from=phoenixrtos/devel /opt/phoenix/utils /opt/phoenix/utils
 ENV PATH="/opt/phoenix/utils:${PATH}"
 
+# get JLink tools
+COPY --from=phoenixrtos/devel /opt/SEGGER /opt/SEGGER
+ENV PATH="/opt/SEGGER/JLink:${PATH}"
+
 # get virtual env for runner
 COPY --from=phoenixrtos/devel /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:${PATH}"
