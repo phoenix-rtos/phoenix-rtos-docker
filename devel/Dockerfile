@@ -58,6 +58,23 @@ RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ]; then \
         cd ../.. && rm -rf qemu; \
     fi
 
-ENV PATH="/opt/phoenix/utils:${PATH}"
+# install Jlink tools for 32-bit armv7 architecture and 64-bit amd architecture
+RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \
+        JLINK_FILENAME=JLink_Linux_arm; \
+    elif [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
+        JLINK_FILENAME=JLink_Linux_x86_64; \
+    fi \
+    mkdir -p /opt/SEGGER && \
+    (cd /opt/SEGGER && \
+    wget --post-data "accept_license_agreement=accepted" "https://www.segger.com/downloads/jlink/${JLINK_FILENAME}.tgz" && \
+    tar xf "${JLINK_FILENAME}.tgz" && \
+    rm "${JLINK_FILENAME}.tgz" && \
+    chmod a-w JLink_Linux_V* && \
+    echo "$(ls -d JLink_Linux_V*)" > version && \
+    mv JLink_Linux_V* JLink && \
+    mkdir -p /etc/udev/rules.d && \
+    cp JLink/99-jlink.rules /etc/udev/rules.d/99-jlink.rules)
+
+ENV PATH="/opt/phoenix/utils:/opt/SEGGER/JLink:${PATH}"
 
 ENTRYPOINT ["/bin/bash", "-l", "-c"]
