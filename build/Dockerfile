@@ -58,7 +58,7 @@ RUN set -ex; \
 # mtd-utils: jffs2 image (imx6ull)
 # genext2fs: ext2 image (ia32)
 # xxd: stm32 image
-# vim-tiny: 'ex' needed for lighttpd build.sh
+# vim: 'ex' needed for lighttpd build.sh
 # cmake: needed for zlib build.sh
 
 RUN apt-get update && \
@@ -69,7 +69,7 @@ RUN apt-get update && \
         genext2fs \
         libhidapi-dev \
         mtd-utils \
-        vim-tiny \
+        vim \
         xxd \
         cmake \
     && rm -rf /var/lib/apt/lists/*
