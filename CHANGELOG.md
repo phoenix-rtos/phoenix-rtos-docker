@@ -1,6 +1,13 @@
 # Changelog
 
-## 20211115 (latest)
+## 20220919 (latest)
+* **GCC version: 9.3.0**
+* add `cmake`
+* replace `vim-tiny` with `vim` because of the conflicts in base ubuntu 20.04 armv7 image
+* add Thread Local Storage to the toolchain
+* phoenix-rtos-project commit: `6874c1d`
+
+## 20211115
 * **GCC version: 9.3.0**
 * add building qemu from Xilinx
 * phoenix-rtos-project commit: `692db63`
