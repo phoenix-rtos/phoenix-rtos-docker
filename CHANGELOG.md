@@ -1,5 +1,9 @@
 # Changelog
 
+## NEXT VERSION
+* **GCC version: 9.3.0**
+* devel: add gdb-multiarch and jlink tools
+
 ## 20220919 (latest)
 * **GCC version: 9.3.0**
 * add `cmake`
