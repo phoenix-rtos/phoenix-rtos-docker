@@ -53,13 +53,15 @@ RUN set -ex; \
 
 
 # phoenix-rtos build dependencies
-# cpio: kernel
-# hidapi: phoenixd
-# mtd-utils: jffs2 image (imx6ull)
-# genext2fs: ext2 image (ia32)
-# xxd: stm32 image
-# vim: 'ex' needed for lighttpd build.sh
-# cmake: needed for zlib build.sh
+#   cpio: kernel
+#   hidapi: phoenixd
+#   mtd-utils: jffs2 image (imx6ull)
+#   genext2fs: ext2 image (ia32)
+#   xxd: stm32 image
+#   vim: 'ex' needed for lighttpd build.sh
+#   cmake: needed for zlib build.sh
+# git: safe.directory: as we're usually running image as root, ensure `git` won't complain about file ownership
+# copy to global config to share for all users / all HOMEs
 
 RUN apt-get update && \
 # make sure debconf doesn't try to prompt (e.g. tzdata on Ubuntu)
@@ -72,7 +74,9 @@ RUN apt-get update && \
         vim \
         xxd \
         cmake \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && git config --global --add safe.directory '*' \
+    && cp /root/.gitconfig /etc/gitconfig
 
 
 ENV PATH="/opt/phoenix/arm-phoenix/bin:/opt/phoenix/i386-pc-phoenix/bin:/opt/phoenix/riscv64-phoenix/bin:${PATH}"

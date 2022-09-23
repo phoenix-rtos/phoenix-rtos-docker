@@ -1,10 +1,12 @@
 # Changelog
 
-## NEXT VERSION
+## 20220923 (latest)
 * **GCC version: 9.3.0**
 * devel: add gdb-multiarch and jlink tools
+* fix `git safe.directory` complaint
+* phoenix-rtos-project commit: `6874c1d`
 
-## 20220919 (latest)
+## 20220919
 * **GCC version: 9.3.0**
 * add `cmake`
 * replace `vim-tiny` with `vim` because of the conflicts in base ubuntu 20.04 armv7 image
