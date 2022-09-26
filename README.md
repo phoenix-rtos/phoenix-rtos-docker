@@ -47,7 +47,7 @@ docker manifest create phoenixrtos/$IMAGE_NAME:$DATE phoenixrtos/$IMAGE_NAME:arm
 docker manifest push phoenixrtos/$IMAGE_NAME:$DATE
 
 # create new tag in the repo
-git tag -a $(DATE)
+git tag -a $DATE
 
 ```
 

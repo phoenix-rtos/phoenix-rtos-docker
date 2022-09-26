@@ -81,5 +81,6 @@ RUN apt-get update && \
 
 ENV PATH="/opt/phoenix/arm-phoenix/bin:/opt/phoenix/i386-pc-phoenix/bin:/opt/phoenix/riscv64-phoenix/bin:${PATH}"
 
-ENTRYPOINT ["./phoenix-rtos-build/build.sh"]
+COPY --chmod=0755 entrypoint.sh /usr/bin/
 
+ENTRYPOINT ["/usr/bin/entrypoint.sh"]
