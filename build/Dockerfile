@@ -7,6 +7,8 @@ FROM ubuntu:20.04 AS build
 
 MAINTAINER Phoenix Systems DevOps Team
 
+RUN groupadd -r -g 999 builder && useradd -r -g builder -u 999
+
 # additional packets needed for toolchain compilation
 RUN apt-get update && \
 # make sure debconf doesn't try to prompt (e.g. tzdata on Ubuntu)
@@ -20,6 +22,7 @@ RUN apt-get update && \
         g++ \
         git \
         gcc \
+        gosu \
         libc6-dev \
         libglib2.0-dev \
         libmaxminddb-dev \
@@ -82,5 +85,7 @@ RUN apt-get update && \
 ENV PATH="/opt/phoenix/arm-phoenix/bin:/opt/phoenix/i386-pc-phoenix/bin:/opt/phoenix/riscv64-phoenix/bin:${PATH}"
 
 COPY --chmod=0755 entrypoint.sh /usr/bin/
+
+WORKDIR /src
 
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
