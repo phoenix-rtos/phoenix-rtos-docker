@@ -1,5 +1,9 @@
 # Changelog
 
+## NEXT VERSION
+* **GCC version: 9.3.0**
+* devel: add openocd 0.11 with required tools
+
 ## 20220926 (latest)
 * **GCC version: 9.3.0**
 * build: add custom entrypoint script for CI use-case (submodule out-of-tree building)

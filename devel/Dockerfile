@@ -4,6 +4,7 @@ ARG DEVEL_XILINX_PLO_VERSION=2021.2
 ARG TARGETPLATFORM
 
 # download python3, qemu and libs to compile Xilinx qemu
+# libusb-1.0 and tclsh needed for appropriate build and using openocd
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
@@ -20,6 +21,8 @@ RUN apt-get update && \
         libpixman-1-dev \
         u-boot-qemu \
         gdb-multiarch \
+        libusb-1.0 \
+        tclsh \
     && rm -rf /var/lib/apt/lists/* \
     && c_rehash # needed for armv7 CA certs to work
 
@@ -43,6 +46,15 @@ RUN git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.g
     (cd _build/host-generic-pc/prog.stripped && cp phoenixd psu psdisk /opt/phoenix/utils) && \
     cd .. && rm -rf phoenix-rtos-project && \
     chmod -R a+rwX /opt/phoenix/utils
+
+# install openocd in 0.11 version
+RUN mkdir -p /etc/udev/rules.d && \
+    git clone https://github.com/openocd-org/openocd.git --branch v0.11.0 && \
+    cd openocd && \
+    ./bootstrap && \
+    ./configure --enable-stlink && make install && \
+    cp contrib/60-openocd.rules /etc/udev/rules.d/ && \
+    cd ../ && rm -rf openocd
 
 # install qemu from xilinx
 # qemu xilinx doesn't support 32-bit architecture, skip armv7 architectures
