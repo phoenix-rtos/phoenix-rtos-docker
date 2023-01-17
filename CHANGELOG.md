@@ -2,27 +2,26 @@
 
 ## 20230117 (latest)
 * **GCC version: 9.3.0**
-* this tag refers only to devel and gh-runner images
 * devel: add openocd 0.11 with required tools
 * phoenix-rtos-project commit: `e5b6904`
 
 ## 20220926
 * **GCC version: 9.3.0**
 * build: add custom entrypoint script for CI use-case (submodule out-of-tree building)
-* phoenix-rtos-project commit: `6874c1d`
+* phoenix-rtos-project commit: `e5b6904`
 
 ## 20220923
 * **GCC version: 9.3.0**
 * devel: add gdb-multiarch and jlink tools
 * fix `git safe.directory` complaint
-* phoenix-rtos-project commit: `6874c1d`
+* phoenix-rtos-project commit: `e5b6904`
 
 ## 20220919
 * **GCC version: 9.3.0**
 * add `cmake`
 * replace `vim-tiny` with `vim` because of the conflicts in base ubuntu 20.04 armv7 image
 * add Thread Local Storage to the toolchain
-* phoenix-rtos-project commit: `6874c1d`
+* phoenix-rtos-project commit: `e5b6904`
 
 ## 20211115
 * **GCC version: 9.3.0**
