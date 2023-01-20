@@ -37,6 +37,10 @@ ENV PATH="/opt/phoenix/utils:${PATH}"
 COPY --from=phoenixrtos/devel /opt/SEGGER /opt/SEGGER
 ENV PATH="/opt/SEGGER/JLink:${PATH}"
 
+# get openocd
+COPY --from=phoenixrtos/devel /usr/local/bin/openocd /usr/local/bin
+COPY --from=phoenixrtos/devel /usr/local/share/openocd /usr/local/share/openocd
+
 # get virtual env for runner
 COPY --from=phoenixrtos/devel /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:${PATH}"
