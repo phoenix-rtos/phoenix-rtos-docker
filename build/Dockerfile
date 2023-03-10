@@ -79,7 +79,17 @@ RUN apt-get update && \
     && cp /root/.gitconfig /etc/gitconfig
 
 
+# Add bear tool to be able to generate compilation database during build step
+RUN set -ex; \
+    git clone --branch 2.4.4 https://github.com/rizsotto/Bear.git && \
+    cd Bear && \
+    cmake -DCMAKE_INSTALL_PREFIX=/opt/bear . && \
+    make all install && \
+    cd .. && rm -rf Bear
+
+
 ENV PATH="/opt/phoenix/arm-phoenix/bin:/opt/phoenix/i386-pc-phoenix/bin:/opt/phoenix/riscv64-phoenix/bin:${PATH}"
+ENV PATH="/opt/bear/bin:${PATH}"
 
 COPY --chmod=0755 entrypoint.sh /usr/bin/
 

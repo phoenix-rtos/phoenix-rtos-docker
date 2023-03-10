@@ -1,5 +1,8 @@
 # Changelog
 
+## NEXT VERSION
+* build: add bear tool
+
 ## 20230117 (latest)
 * **GCC version: 9.3.0**
 * devel: add openocd 0.11 with required tools
