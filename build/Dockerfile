@@ -1,5 +1,5 @@
 # building stage, we can use feature-rich environment from which we will copy the results into final image
-FROM ubuntu:20.04 AS build
+FROM ubuntu:22.04 AS build
 
 # notes:
 #  - each RUN/COPY creates new docker layer, try to keep them to the minimum
