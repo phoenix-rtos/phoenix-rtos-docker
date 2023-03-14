@@ -4,6 +4,7 @@
 * build: add bear tool
 * build: update base ubuntu image to 22.04
 * devel: update base ubuntu image to 22.04
+* devel: update openocd to v0.12
 
 ## 20230117 (latest)
 * **GCC version: 9.3.0**

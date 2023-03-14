@@ -50,9 +50,9 @@ RUN git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.g
     cd .. && rm -rf phoenix-rtos-project && \
     chmod -R a+rwX /opt/phoenix/utils
 
-# install openocd in 0.11 version
+# install openocd in 0.12 version
 RUN mkdir -p /etc/udev/rules.d && \
-    git clone https://github.com/openocd-org/openocd.git --branch v0.11.0 && \
+    git clone https://github.com/openocd-org/openocd.git --branch v0.12.0 && \
     cd openocd && \
     ./bootstrap && \
     ./configure --enable-stlink && make install && \
