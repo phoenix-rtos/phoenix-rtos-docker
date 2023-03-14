@@ -3,6 +3,9 @@ FROM ubuntu:22.04
 ARG GH_RUNNER_VERSION=2.303.0
 ARG GH_PLATFORM=arm
 
+LABEL org.opencontainers.image.ref.name=gh-runner
+LABEL org.opencontainers.image.source=https://github.com/phoenix-rtos/phoenix-rtos-docker
+
 ENV RUNNER_ALLOW_RUNASROOT=true
 
 WORKDIR /actions-runner

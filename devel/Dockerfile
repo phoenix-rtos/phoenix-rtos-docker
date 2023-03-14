@@ -3,6 +3,9 @@ FROM phoenixrtos/build:latest
 ARG DEVEL_XILINX_PLO_VERSION=2021.2
 ARG TARGETPLATFORM
 
+LABEL org.opencontainers.image.ref.name=devel
+LABEL org.opencontainers.image.source=https://github.com/phoenix-rtos/phoenix-rtos-docker
+
 # download python3, qemu and libs to compile Xilinx qemu
 # libusb-1.0 and tclsh needed for appropriate build and using openocd
 RUN apt-get update && \

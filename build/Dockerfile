@@ -5,7 +5,8 @@ FROM ubuntu:22.04 AS build
 #  - each RUN/COPY creates new docker layer, try to keep them to the minimum
 #  - multistage build doesn't give us any advantage (we need gcc/libc-dev in the final image also)
 
-MAINTAINER Phoenix Systems DevOps Team
+LABEL org.opencontainers.image.ref.name=build
+LABEL org.opencontainers.image.source=https://github.com/phoenix-rtos/phoenix-rtos-docker
 
 # additional packets needed for toolchain compilation
 RUN apt-get update && \
