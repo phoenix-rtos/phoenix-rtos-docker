@@ -1,13 +1,19 @@
 # Changelog
 
 ## NEXT VERSION
+
+## 20230313 (latest)
+* **GCC version: 9.3.0**
 * build: add bear tool
 * build: update base ubuntu image to 22.04
 * devel: update base ubuntu image to 22.04
 * devel: update openocd to v0.12
 * devel: update xilinx qemu to 2022.2
+* toolchain: add libstdc++ building (full C++ support)
+* add Thread Local Storage libphoenix implementation
+* phoenix-rtos-project commit: `e8b8ba5`
 
-## 20230117 (latest)
+## 20230117
 * **GCC version: 9.3.0**
 * devel: add openocd 0.11 with required tools
 * phoenix-rtos-project commit: `e5b6904`
