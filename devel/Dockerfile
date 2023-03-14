@@ -1,6 +1,6 @@
 FROM phoenixrtos/build:latest
 
-ARG DEVEL_XILINX_PLO_VERSION=2021.2
+ARG DEVEL_XILINX_PLO_VERSION=2022.2
 ARG TARGETPLATFORM
 
 LABEL org.opencontainers.image.ref.name=devel
@@ -26,6 +26,7 @@ RUN apt-get update && \
         gdb-multiarch \
         libusb-1.0 \
         tclsh \
+        ninja-build \
     && rm -rf /var/lib/apt/lists/* \
     && c_rehash # needed for armv7 CA certs to work
 
