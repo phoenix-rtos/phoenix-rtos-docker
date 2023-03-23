@@ -2,7 +2,12 @@
 
 ## NEXT VERSION
 
-## 20230313 (latest)
+## 20230323 (latest)
+* **GCC version: 9.3.0**
+* devel: update host utils
+* phoenix-rtos-project commit: `e8b8ba5`
+
+## 20230313
 * **GCC version: 9.3.0**
 * build: add bear tool
 * build: update base ubuntu image to 22.04
