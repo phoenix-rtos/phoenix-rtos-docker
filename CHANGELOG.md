@@ -2,7 +2,14 @@
 
 ## NEXT VERSION
 
-## 20230323 (latest)
+## 20230522 (latest)
+* **GCC version: 9.3.0**
+* devel: update host utils
+* phoenix-rtos-project commit
+  * devel image: `2346a35`
+  * build image: `e8b8ba5`
+
+## 20230323
 * **GCC version: 9.3.0**
 * devel: update host utils
 * phoenix-rtos-project commit: `e8b8ba5`
