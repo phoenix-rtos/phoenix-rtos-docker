@@ -40,7 +40,8 @@ RUN pip3 install --no-cache-dir \
     pyserial \
     pyyaml \
     pexpect \
-    RPi.GPIO
+    RPi.GPIO \
+    colorama
 
 # install hostutils
 RUN git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.git && \
