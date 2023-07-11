@@ -1,7 +1,6 @@
 # Changelog
 
 ## NEXT VERSION
-* devel: add colorama package
 
 ## 20230711 (latest)
 * **GCC version: 9.3.0**
