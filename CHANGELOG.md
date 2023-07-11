@@ -3,7 +3,14 @@
 ## NEXT VERSION
 * devel: add colorama package
 
-## 20230522 (latest)
+## 20230711 (latest)
+* **GCC version: 9.3.0**
+* devel: add colorama package
+* phoenix-rtos-project commit
+  * devel image: `7496f4a`
+  * build image: `e8b8ba5`
+
+## 20230522
 * **GCC version: 9.3.0**
 * devel: update host utils
 * phoenix-rtos-project commit
