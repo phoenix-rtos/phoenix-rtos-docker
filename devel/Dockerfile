@@ -80,7 +80,7 @@ RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ]; then \
 RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \
         JLINK_FILENAME="JLink_Linux_arm"; \
     elif [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
-        JLINK_FILENAME="JLink_Linux_x86_64"; \
+        JLINK_FILENAME="JLink_Linux_arm64"; \
     fi; \
     mkdir -p /opt/SEGGER && \
     (cd /opt/SEGGER && \
