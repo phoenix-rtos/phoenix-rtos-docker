@@ -35,13 +35,14 @@ RUN python3 -m venv /opt/venv
 
 ENV PATH="/opt/venv/bin:$PATH"
 
-# get python requirements
+# install test runner python requirements
 RUN pip3 install --no-cache-dir \
     pyserial \
     pyyaml \
     pexpect \
     RPi.GPIO \
-    colorama
+    colorama \
+    junitparser
 
 # install hostutils
 RUN git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.git && \
