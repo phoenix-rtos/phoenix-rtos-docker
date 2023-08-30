@@ -1,10 +1,15 @@
 # Changelog
 
 ## NEXT VERSION
+
+## 20230830 (latest)
+* **GCC version: 9.3.0**
 * devel: add junitparser python package
+* phoenix-rtos-project commit
+  * devel image: `3a54d36`
+  * build image: `e8b8ba5`
 
-
-## 20230711 (latest)
+## 20230711
 * **GCC version: 9.3.0**
 * devel: add colorama package
 * phoenix-rtos-project commit
