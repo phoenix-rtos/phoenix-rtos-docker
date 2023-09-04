@@ -1,6 +1,7 @@
 # Changelog
 
 ## NEXT VERSION
+* build: add sparc-phoenix toolchain
 
 ## 20230830 (latest)
 * **GCC version: 9.3.0**
