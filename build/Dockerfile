@@ -48,6 +48,7 @@ RUN set -ex; \
     ./build-toolchain.sh arm-phoenix /opt/phoenix/ && \
     ./build-toolchain.sh i386-pc-phoenix /opt/phoenix/ && \
     ./build-toolchain.sh riscv64-phoenix /opt/phoenix/ && \
+    ./build-toolchain.sh sparc-phoenix /opt/phoenix/ && \
     rm -rf /opt/phoenix/*.patch /opt/phoenix/binutils-* /opt/phoenix/gcc-* && \
     rm -rf /usr/src/phoenix && \
     chmod -R a+rwX /opt/phoenix
@@ -89,7 +90,7 @@ RUN set -ex; \
     cd .. && rm -rf Bear
 
 
-ENV PATH="/opt/phoenix/arm-phoenix/bin:/opt/phoenix/i386-pc-phoenix/bin:/opt/phoenix/riscv64-phoenix/bin:${PATH}"
+ENV PATH="/opt/phoenix/arm-phoenix/bin:/opt/phoenix/i386-pc-phoenix/bin:/opt/phoenix/riscv64-phoenix/bin:/opt/phoenix/sparc-phoenix/bin:${PATH}"
 ENV PATH="/opt/bear/bin:${PATH}"
 
 COPY --chmod=0755 entrypoint.sh /usr/bin/
