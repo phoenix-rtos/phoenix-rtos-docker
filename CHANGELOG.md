@@ -1,6 +1,7 @@
 # Changelog
 
 ## NEXT VERSION
+
 * build: add sparc-phoenix toolchain
 * devel: update xilinx qemu to 2023.1
 * devel: update how host tools are built
@@ -15,6 +16,7 @@
   * build image: `e8b8ba5`
 
 ## 20230711
+
 * **GCC version: 9.3.0**
 * devel: add colorama package
 * phoenix-rtos-project commit
@@ -22,6 +24,7 @@
   * build image: `e8b8ba5`
 
 ## 20230522
+
 * **GCC version: 9.3.0**
 * devel: update host utils
 * phoenix-rtos-project commit
@@ -29,11 +32,13 @@
   * build image: `e8b8ba5`
 
 ## 20230323
+
 * **GCC version: 9.3.0**
 * devel: update host utils
 * phoenix-rtos-project commit: `e8b8ba5`
 
 ## 20230313
+
 * **GCC version: 9.3.0**
 * build: add bear tool
 * build: update base ubuntu image to 22.04
@@ -45,22 +50,26 @@
 * phoenix-rtos-project commit: `e8b8ba5`
 
 ## 20230117
+
 * **GCC version: 9.3.0**
 * devel: add openocd 0.11 with required tools
 * phoenix-rtos-project commit: `e5b6904`
 
 ## 20220926
+
 * **GCC version: 9.3.0**
 * build: add custom entrypoint script for CI use-case (submodule out-of-tree building)
 * phoenix-rtos-project commit: `e5b6904`
 
 ## 20220923
+
 * **GCC version: 9.3.0**
 * devel: add gdb-multiarch and jlink tools
 * fix `git safe.directory` complaint
 * phoenix-rtos-project commit: `e5b6904`
 
 ## 20220919
+
 * **GCC version: 9.3.0**
 * add `cmake`
 * replace `vim-tiny` with `vim` because of the conflicts in base ubuntu 20.04 armv7 image
@@ -68,16 +77,19 @@
 * phoenix-rtos-project commit: `e5b6904`
 
 ## 20211115
+
 * **GCC version: 9.3.0**
 * add building qemu from Xilinx
 * phoenix-rtos-project commit: `692db63`
 
 ## 20211105
+
 * **GCC version: 9.3.0**
 * images are now multi-architecture (linux/arm/v7, linux/amd64)
 * phoenix-rtos-project commit: `692db63`
 
 ## 20210930
+
 * **GCC version: 9.3.0**
 * docker image is considerably smaller due to additional binaries stripping
 * phoenix-rtos-project commit: `330f76c`

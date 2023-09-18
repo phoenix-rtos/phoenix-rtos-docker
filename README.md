@@ -7,7 +7,7 @@ Prebuilt images are available on [DockerHub](https://hub.docker.com/r/phoenixrto
 
 ### phoenixrtos/build
 
-Image with toolchains for `arm7v-a`, `armv7-m`, `ia32` and `riscv` targets.
+Image with toolchains for `arm7v-a`, `armv7-m`, `ia32`, `riscv` and `sparc` targets.
 
 ### phoenixrtos/devel
 
@@ -57,4 +57,3 @@ Repeat the above steps for:
 IMAGE_NAME=devel
 IMAGE_NAME=gh-runner
 ```
-
