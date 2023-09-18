@@ -2,6 +2,7 @@
 
 ## NEXT VERSION
 * build: add sparc-phoenix toolchain
+* gh-runner: don't depend on `devel` image, use multi-stage build instead
 
 ## 20230830 (latest)
 * **GCC version: 9.3.0**
