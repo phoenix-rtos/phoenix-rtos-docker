@@ -2,6 +2,8 @@
 
 ## NEXT VERSION
 * build: add sparc-phoenix toolchain
+* devel: update how host tools are built
+* all: add option to build with specific phoenix-rtos-project reference
 * gh-runner: don't depend on `devel` image, use multi-stage build instead
 
 ## 20230830 (latest)

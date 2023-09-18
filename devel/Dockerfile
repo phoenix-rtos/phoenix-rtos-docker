@@ -30,29 +30,6 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/* \
     && c_rehash # needed for armv7 CA certs to work
 
-# prepare virtual env
-RUN python3 -m venv /opt/venv
-
-ENV PATH="/opt/venv/bin:$PATH"
-
-# install test runner python requirements
-RUN pip3 install --no-cache-dir \
-    pyserial \
-    pyyaml \
-    pexpect \
-    RPi.GPIO \
-    colorama \
-    junitparser
-
-# install hostutils
-RUN git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.git && \
-    cd phoenix-rtos-project && \
-    TARGET=host-generic-pc make -C phoenix-rtos-hostutils -f Makefile.old all && \
-    mkdir -p /opt/phoenix/utils && \
-    (cd _build/host-generic-pc/prog.stripped && cp phoenixd psu psdisk /opt/phoenix/utils) && \
-    cd .. && rm -rf phoenix-rtos-project && \
-    chmod -R a+rwX /opt/phoenix/utils
-
 # install openocd in 0.12 version
 RUN mkdir -p /etc/udev/rules.d && \
     git clone https://github.com/openocd-org/openocd.git --branch v0.12.0 && \
@@ -93,6 +70,38 @@ RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \
     mv JLink_Linux_V* JLink && \
     mkdir -p /etc/udev/rules.d && \
     cp JLink/99-jlink.rules /etc/udev/rules.d/99-jlink.rules)
+
+# install our tools as a last step - as they will change the most oftem
+
+# prepare virtual env
+RUN python3 -m venv /opt/venv
+
+ENV PATH="/opt/venv/bin:$PATH"
+
+# install test runner python requirements
+# TODO: use requirements.txt from phoenix-rtos-test ?
+RUN pip3 install --no-cache-dir \
+    pyserial \
+    pyyaml \
+    pexpect \
+    RPi.GPIO \
+    colorama \
+    junitparser
+
+# use to check-out specific commit of phoenix-rtos-project (--build-arg PHOENIX_PROJECT_REF=release/3.0)
+ARG PHOENIX_PROJECT_REF=HEAD
+
+# install hostutils
+RUN git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.git && \
+    cd phoenix-rtos-project && \
+    git checkout ${PHOENIX_PROJECT_REF} && \
+    NOSAN=1 TARGET=host-generic-pc ./phoenix-rtos-build/build.sh host && \
+    mkdir -p /opt/phoenix/utils && \
+    git rev-parse --short HEAD > /opt/phoenix/utils/git-version && \
+    (cd _build/host-generic-pc/prog.stripped && cp -a * /opt/phoenix/utils) && \
+    cd .. && rm -rf phoenix-rtos-project && \
+    chmod -R a+rX /opt/phoenix/utils
+
 
 ENV PATH="/opt/phoenix/utils:/opt/SEGGER/JLink:${PATH}"
 

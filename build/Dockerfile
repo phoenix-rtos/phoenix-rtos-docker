@@ -1,4 +1,3 @@
-# building stage, we can use feature-rich environment from which we will copy the results into final image
 FROM ubuntu:22.04 AS build
 
 # notes:
@@ -35,6 +34,8 @@ RUN apt-get update && \
 
 # use --build-arg FORCE_REBUILD=$(date +%s) to force rebuild from this line
 ARG FORCE_REBUILD=unknown
+# use to check-out specific commit of phoenix-rtos-project (--build-arg PHOENIX_PROJECT_REF=release/3.0)
+ARG PHOENIX_PROJECT_REF=HEAD
 
 # download toolchain build script and ececute it for all platforms
 # remove build artifacts from the final image
@@ -43,6 +44,7 @@ RUN set -ex; \
     mkdir -p /usr/src/phoenix && \
     cd /usr/src/phoenix && \
     git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.git && \
+    (cd phoenix-rtos-project && git checkout ${PHOENIX_PROJECT_REF}) && \
     mkdir -p /opt/phoenix && (cd phoenix-rtos-project && git rev-parse --short HEAD > /opt/phoenix/git-version) && \
     cd phoenix-rtos-project/phoenix-rtos-build/toolchain/ && \
     ./build-toolchain.sh arm-phoenix /opt/phoenix/ && \
