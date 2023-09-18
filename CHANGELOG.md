@@ -2,13 +2,21 @@
 
 ## NEXT VERSION
 
+## 20230918 (latest)
+
+* **GCC version: 9.5.0**
+* **`build`, `devel` images won't be published for ARMv7 arch anymore**
 * build: add sparc-phoenix toolchain
+* build: support fully-external sysroot in all toolchains
 * devel: update xilinx qemu to 2023.1
 * devel: update how host tools are built
+* devel, gh-runner: add support for am64 JLink tools, use explicit version
 * all: add option to build with specific phoenix-rtos-project reference
 * gh-runner: don't depend on `devel` image, use multi-stage build instead
+* phoenix-rtos-project commit `6ece28c`
 
-## 20230830 (latest)
+## 20230830
+
 * **GCC version: 9.3.0**
 * devel: add junitparser python package
 * phoenix-rtos-project commit

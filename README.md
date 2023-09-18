@@ -26,7 +26,9 @@ docker buildx inspect --bootstrap
 IMAGE_NAME=build
 DATE=$(date +%Y%m%d)
 
-# building will take about approximately 10 hours for arm/v7 and 2 hours for amd64 - after that test if it builds all TARGETs from phoenix-rtos-project
+# building will take about approximately 15 hours for arm/v7 and 1.5 hours for amd64
+# - don't build armv7 images for build, devel (only for gh-runner)
+# - after building test if it builds all TARGETs from phoenix-rtos-project
 # use --load flag to load image into docker but it works only for one platform
 docker buildx build --load --platform linux/arm/v7 -t phoenixrtos/$IMAGE_NAME:armv7 -f $IMAGE_NAME/Dockerfile $IMAGE_NAME
 docker buildx build --load --platform linux/amd64 -t phoenixrtos/$IMAGE_NAME:amd64 -f $IMAGE_NAME/Dockerfile $IMAGE_NAME
