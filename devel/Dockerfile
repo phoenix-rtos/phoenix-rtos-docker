@@ -1,6 +1,6 @@
 FROM phoenixrtos/build:latest
 
-ARG DEVEL_XILINX_PLO_VERSION=2022.2
+ARG DEVEL_XILINX_PLO_VERSION=2023.1
 ARG TARGETPLATFORM
 
 LABEL org.opencontainers.image.ref.name=devel
@@ -54,24 +54,29 @@ RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ]; then \
         cd ../.. && rm -rf qemu; \
     fi
 
+ARG JLINK_VERSION=V792d
+
 # install Jlink tools for 32-bit armv7 architecture and 64-bit amd architecture
 RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \
-        JLINK_FILENAME="JLink_Linux_arm"; \
+        JLINK_FILENAME="JLink_Linux_${JLINK_VERSION}_arm.tgz"; \
     elif [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
-        JLINK_FILENAME="JLink_Linux_x86_64"; \
+        JLINK_FILENAME="JLink_Linux_${JLINK_VERSION}_x86_64.tgz"; \
+    else \
+        echo "Unknown target platform: $TARGETPLATFORM" && exit 1; \
     fi; \
     mkdir -p /opt/SEGGER && \
     (cd /opt/SEGGER && \
-    wget --post-data "accept_license_agreement=accepted" "https://www.segger.com/downloads/jlink/${JLINK_FILENAME}.tgz" && \
-    tar xf "${JLINK_FILENAME}.tgz" && \
-    rm "${JLINK_FILENAME}.tgz" && \
+    wget --post-data "accept_license_agreement=accepted" "https://www.segger.com/downloads/jlink/${JLINK_FILENAME}" && \
+    tar xf "${JLINK_FILENAME}" && \
+    rm "${JLINK_FILENAME}" && \
     chmod a-w JLink_Linux_V* && \
     echo "$(ls -d JLink_Linux_V*)" > version && \
     mv JLink_Linux_V* JLink && \
     mkdir -p /etc/udev/rules.d && \
     cp JLink/99-jlink.rules /etc/udev/rules.d/99-jlink.rules)
 
-# install our tools as a last step - as they will change the most oftem
+
+### install our tools as a last step - as they will change the most oftem
 
 # prepare virtual env
 RUN python3 -m venv /opt/venv
