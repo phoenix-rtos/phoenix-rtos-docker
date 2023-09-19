@@ -61,6 +61,8 @@ RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \
         JLINK_FILENAME="JLink_Linux_${JLINK_VERSION}_arm.tgz"; \
     elif [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
         JLINK_FILENAME="JLink_Linux_${JLINK_VERSION}_x86_64.tgz"; \
+    elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then \
+        JLINK_FILENAME="JLink_Linux_${JLINK_VERSION}_arm64.tgz"; \
     else \
         echo "Unknown target platform: $TARGETPLATFORM" && exit 1; \
     fi; \
