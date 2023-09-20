@@ -2,7 +2,15 @@
 
 ## NEXT VERSION
 
-## 20230918 (latest)
+## 20230920 (latest)
+
+* **GCC version: 9.5.0**
+* gh-runner: support arm64 target architecture
+* build: fix `sparc-phoenix` toolchain linking spec
+* build: make `sparc-phoenix` multilib
+* phoenix-rtos-project commit `5c6d72a`
+
+## 20230918
 
 * **GCC version: 9.5.0**
 * **`build`, `devel` images won't be published for ARMv7 arch anymore**
