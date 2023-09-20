@@ -99,7 +99,16 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 # install github actions runner
-RUN curl -L -O https://github.com/actions/runner/releases/download/v${GH_RUNNER_VERSION}/actions-runner-linux-${GH_PLATFORM}-${GH_RUNNER_VERSION}.tar.gz \
+RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \
+        GH_PLATFORM="arm"; \
+    elif [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
+        GH_PLATFORM="x64"; \
+    elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then \
+        GH_PLATFORM="arm64"; \
+    else \
+        echo "Unknown target platform: $TARGETPLATFORM" && exit 1; \
+    fi; \
+    curl -L -O https://github.com/actions/runner/releases/download/v${GH_RUNNER_VERSION}/actions-runner-linux-${GH_PLATFORM}-${GH_RUNNER_VERSION}.tar.gz \
     && tar -xzf ./actions-runner-linux-${GH_PLATFORM}-${GH_RUNNER_VERSION}.tar.gz \
     && rm -rf ./actions-runner-linux-${GH_PLATFORM}-${GH_RUNNER_VERSION}.tar.gz \
     && DEBIAN_FRONTEND=noninteractive ./bin/installdependencies.sh \
