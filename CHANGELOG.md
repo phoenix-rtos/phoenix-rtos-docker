@@ -2,6 +2,8 @@
 
 ## NEXT VERSION
 
+* devel: add tini (init system)
+
 ## 20230920 (latest)
 
 * **GCC version: 9.5.0**
