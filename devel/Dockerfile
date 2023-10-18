@@ -27,6 +27,7 @@ RUN apt-get update && \
         libusb-1.0 \
         tclsh \
         ninja-build \
+        tini \
     && rm -rf /var/lib/apt/lists/* \
     && c_rehash # needed for armv7 CA certs to work
 
