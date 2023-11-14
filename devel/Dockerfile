@@ -16,11 +16,20 @@ RUN apt-get update && \
         python3-venv \
         python3-pip \
         opensbi \
+        dmidecode \
+        dnsmasq \
+        ebtables \
+        iproute2 \
+        iptables \
         qemu-system-i386 \
         qemu-system-misc \
         qemu-utils \
         libgcrypt20-dev \
         zlib1g-dev \
+        libvirt-clients \
+        libvirt-daemon-system \
+        systemd \
+        qemu-system-common \
         libpixman-1-dev \
         u-boot-qemu \
         gdb-multiarch \
@@ -28,6 +37,8 @@ RUN apt-get update && \
         tclsh \
         ninja-build \
         tini \
+        sudo \
+        net-tools \
     && rm -rf /var/lib/apt/lists/* \
     && c_rehash # needed for armv7 CA certs to work
 
@@ -110,7 +121,18 @@ RUN git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.g
     cd .. && rm -rf phoenix-rtos-project && \
     chmod -R a+rX /opt/phoenix/utils
 
+RUN sed -i '/^#stdio_handler/ a\stdio_handler = "file"' /etc/libvirt/qemu.conf
+
+COPY config/pools/* /etc/libvirt/storage/
+COPY config/networks/* /etc/libvirt/qemu/networks/
+RUN mkdir -p /etc/libvirt/storage/autostart /etc/libvirt/qemu/networks/autostart && \
+    for pool in /etc/libvirt/storage/*.xml; do \
+        ln -sf "../${pool##*/}" /etc/libvirt/storage/autostart/; \
+    done && \
+    for net in /etc/libvirt/qemu/networks/*.xml; do \
+        ln -sf "../${net##*/}" /etc/libvirt/qemu/networks/autostart/; \
+    done
 
 ENV PATH="/opt/phoenix/utils:/opt/SEGGER/JLink:${PATH}"
 
-ENTRYPOINT ["/bin/bash", "-l", "-c"]
+COPY --chmod=0755 entrypoint.sh /usr/bin/

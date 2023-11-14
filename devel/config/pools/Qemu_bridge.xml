@@ -1,0 +1,6 @@
+<pool type='dir'>
+  <name>Qemu_bridge</name>
+  <target>
+    <path>/var/lib/libvirt/images</path>
+  </target>
+</pool>
