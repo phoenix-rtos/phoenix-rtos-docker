@@ -23,6 +23,7 @@ RUN apt-get update && \
         python3-venv \
         tclsh \
         wget \
+        net-tools \
     && rm -rf /var/lib/apt/lists/*
 
 

@@ -28,6 +28,7 @@ RUN apt-get update && \
         tclsh \
         ninja-build \
         tini \
+        net-tools \
     && rm -rf /var/lib/apt/lists/* \
     && c_rehash # needed for armv7 CA certs to work
 
