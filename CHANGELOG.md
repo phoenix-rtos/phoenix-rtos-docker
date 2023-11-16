@@ -3,6 +3,7 @@
 ## NEXT VERSION
 
 * devel: add tini (init system)
+* devel: add net-tools
 
 ## 20230920 (latest)
 
