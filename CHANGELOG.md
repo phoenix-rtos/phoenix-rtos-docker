@@ -2,10 +2,16 @@
 
 ## NEXT VERSION
 
-* devel: add tini (init system)
-* devel: add net-tools
+## 20231204 (latest)
 
-## 20230920 (latest)
+* **GCC version: 9.5.0**
+* devel: add tini (init system)
+* devel, gh-runner: add net-tools
+* phoenix-rtos-project commit:
+  * devel image: `b947c7a`
+  * build image: `5c6d72a`
+
+## 20230920
 
 * **GCC version: 9.5.0**
 * gh-runner: support arm64 target architecture
