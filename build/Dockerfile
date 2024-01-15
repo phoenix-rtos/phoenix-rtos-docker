@@ -51,7 +51,7 @@ RUN set -ex; \
     ./build-toolchain.sh i386-pc-phoenix /opt/phoenix/ && \
     ./build-toolchain.sh riscv64-phoenix /opt/phoenix/ && \
     ./build-toolchain.sh sparc-phoenix /opt/phoenix/ && \
-    rm -rf /opt/phoenix/*.patch /opt/phoenix/binutils-* /opt/phoenix/gcc-* && \
+    rm -rf /opt/phoenix/_build && \
     rm -rf /usr/src/phoenix && \
     chmod -R a+rwX /opt/phoenix
 
