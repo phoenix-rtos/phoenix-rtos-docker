@@ -2,7 +2,12 @@
 
 ## NEXT VERSION
 
-## 20231204 (latest)
+## 20240221 (latest)
+
+* **GCC version: 9.5.0**
+* phoenix-rtos-project commit `04a14d3`
+
+## 20231204
 
 * **GCC version: 9.5.0**
 * devel: add tini (init system)
