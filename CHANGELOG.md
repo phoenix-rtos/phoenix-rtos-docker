@@ -2,6 +2,12 @@
 
 ## NEXT VERSION
 
+## 20240228
+
+* **old version release - GCC version: 7.1.0**
+* on branch release/gcc7-1
+* phoenix-rtos-project commit `28e0aba`
+
 ## 20240221 (latest)
 
 * **GCC version: 9.5.0**
