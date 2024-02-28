@@ -44,15 +44,29 @@ RUN set -ex; \
     mkdir -p /usr/src/phoenix && \
     cd /usr/src/phoenix && \
     git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.git && \
-    (cd phoenix-rtos-project && git checkout ${PHOENIX_PROJECT_REF}) && \
+    (cd phoenix-rtos-project && git checkout -f ${PHOENIX_PROJECT_REF}) && \
+    (cd phoenix-rtos-project && git submodule update --recursive --force) && \
     mkdir -p /opt/phoenix && (cd phoenix-rtos-project && git rev-parse --short HEAD > /opt/phoenix/git-version) && \
-    cd phoenix-rtos-project/phoenix-rtos-build/toolchain/ && \
+    ls phoenix-rtos-project/phoenix-rtos-build && \
+    cd phoenix-rtos-project/phoenix-rtos-kernel/toolchain/ && \
     ./build-toolchain.sh arm-phoenix /opt/phoenix/ && \
-    ./build-toolchain.sh i386-pc-phoenix /opt/phoenix/ && \
-    ./build-toolchain.sh riscv64-phoenix /opt/phoenix/ && \
-    ./build-toolchain.sh sparc-phoenix /opt/phoenix/ && \
-    rm -rf /opt/phoenix/_build && \
+    # ./build-toolchain.sh i386-pc-phoenix /opt/phoenix/ && \
+    # ./build-toolchain.sh riscv64-phoenix /opt/phoenix/ && \
+    # ./build-toolchain.sh sparc-phoenix /opt/phoenix/ && \
     rm -rf /usr/src/phoenix && \
+    rm -rf /opt/phoenix/binutils-2.28.tar.bz2 && \
+    rm -rf /opt/phoenix/mpc-1.0.3.tar.gz && \
+    rm -rf /opt/phoenix/gcc-7.1.0.tar.bz2 && \
+    rm -rf /opt/phoenix/gmp-6.1.2.tar.bz2 && \
+    rm -rf /opt/phoenix/mpfr-3.1.5.tar.bz2 && \
+    rm -rf /opt/phoenix/binutils-2.28 && \
+    rm -rf /opt/phoenix/mpc-1.0.3 && \
+    rm -rf /opt/phoenix/gcc-7.1.0 && \
+    rm -rf /opt/phoenix/gmp-6.1.2 && \
+    rm -rf /opt/phoenix/mpfr-3.1.5 && \
+    rm -rf /opt/phoenix/binutils-01-i386-pc-phoenix.patch && \
+    rm -rf /opt/phoenix/gcc-01-arm-phoenix-multilib.patch && \
+    rm -rf /opt/phoenix/gcc-02-i386-pc-phoenix.patch && \
     chmod -R a+rwX /opt/phoenix
 
 
