@@ -23,7 +23,6 @@ RUN apt-get update && \
         python3-venv \
         tclsh \
         wget \
-        net-tools \
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -97,6 +96,7 @@ RUN apt-get update && \
         uhubctl \
         libatomic1 \
         gdb-multiarch \
+        net-tools \
     && rm -rf /var/lib/apt/lists/*
 
 # install github actions runner

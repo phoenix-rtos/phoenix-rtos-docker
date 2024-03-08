@@ -3,6 +3,7 @@
 ## NEXT VERSION
 
 * devel, gh-runner: bump jlink version
+* gh-runner: fix net-tools
 
 ## 20240228
 
