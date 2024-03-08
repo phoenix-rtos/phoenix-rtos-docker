@@ -2,6 +2,7 @@
 
 ## NEXT VERSION
 
+* devel, gh-runner: pull requirements for test runner from requirements.txt
 * devel, gh-runner: bump jlink version
 * gh-runner: fix net-tools
 
