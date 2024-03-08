@@ -87,23 +87,14 @@ RUN python3 -m venv /opt/venv
 
 ENV PATH="/opt/venv/bin:$PATH"
 
-# install test runner python requirements
-# TODO: use requirements.txt from phoenix-rtos-test ?
-RUN pip3 install --no-cache-dir \
-    pyserial \
-    pyyaml \
-    pexpect \
-    RPi.GPIO \
-    colorama \
-    junitparser
-
 # use to check-out specific commit of phoenix-rtos-project (--build-arg PHOENIX_PROJECT_REF=release/3.0)
 ARG PHOENIX_PROJECT_REF=HEAD
 
-# install hostutils
+# install hostutils and test runner requirements
 RUN git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.git && \
     cd phoenix-rtos-project && \
     git checkout ${PHOENIX_PROJECT_REF} && \
+    pip3 install -r phoenix-rtos-tests/requirements.txt --no-cache-dir && \
     NOSAN=1 TARGET=host-generic-pc ./phoenix-rtos-build/build.sh host && \
     mkdir -p /opt/phoenix/utils && \
     git rev-parse --short HEAD > /opt/phoenix/utils/git-version && \
