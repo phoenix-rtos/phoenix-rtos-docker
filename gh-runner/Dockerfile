@@ -116,7 +116,7 @@ RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \
     && rm -rf /var/lib/apt/lists/*
 
 
-ARG JLINK_VERSION=V792d
+ARG JLINK_VERSION=V794l
 
 # install Jlink tools for 32-bit armv7 architecture and 64-bit amd architecture
 RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \

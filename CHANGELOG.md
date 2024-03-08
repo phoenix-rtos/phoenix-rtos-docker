@@ -2,6 +2,8 @@
 
 ## NEXT VERSION
 
+* devel, gh-runner: bump jlink version
+
 ## 20240228
 
 * **old version release - GCC version: 7.1.0**
