@@ -2,9 +2,15 @@
 
 ## NEXT VERSION
 
+## 20240314 (latest)
+
+* **GCC version: 9.5.0**
 * devel, gh-runner: pull requirements for test runner from requirements.txt
 * devel, gh-runner: bump jlink version
 * gh-runner: fix net-tools
+* phoenix-rtos-project commit:
+  * devel image: `a2f1e41`
+  * build image: `04a14d3`
 
 ## 20240228
 
@@ -12,7 +18,7 @@
 * on branch release/gcc7-1
 * phoenix-rtos-project commit `28e0aba`
 
-## 20240221 (latest)
+## 20240221
 
 * **GCC version: 9.5.0**
 * phoenix-rtos-project commit `04a14d3`
