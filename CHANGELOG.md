@@ -2,7 +2,12 @@
 
 ## NEXT VERSION
 
-## 20240314 (latest)
+## v3.2.0 (latest)
+
+* **GCC version: 9.5.0**
+* phoenix-rtos-project commit: `v3.2.1` (`df4e848`)
+
+## 20240314
 
 * **GCC version: 9.5.0**
 * devel, gh-runner: pull requirements for test runner from requirements.txt
