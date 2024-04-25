@@ -94,6 +94,7 @@ ARG PHOENIX_PROJECT_REF=HEAD
 RUN git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.git && \
     cd phoenix-rtos-project && \
     git checkout ${PHOENIX_PROJECT_REF} && \
+    git submodule update --recursive --force && \
     pip3 install -r phoenix-rtos-tests/requirements.txt --no-cache-dir && \
     NOSAN=1 TARGET=host-generic-pc ./phoenix-rtos-build/build.sh host && \
     mkdir -p /opt/phoenix/utils && \

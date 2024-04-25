@@ -45,6 +45,7 @@ RUN set -ex; \
     cd /usr/src/phoenix && \
     git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.git && \
     (cd phoenix-rtos-project && git checkout ${PHOENIX_PROJECT_REF}) && \
+    (cd phoenix-rtos-project && git submodule update --recursive --force) && \
     mkdir -p /opt/phoenix && (cd phoenix-rtos-project && git rev-parse --short HEAD > /opt/phoenix/git-version) && \
     cd phoenix-rtos-project/phoenix-rtos-build/toolchain/ && \
     ./build-toolchain.sh arm-phoenix /opt/phoenix/ && \
