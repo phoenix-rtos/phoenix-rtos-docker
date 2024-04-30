@@ -2,7 +2,13 @@
 
 ## NEXT VERSION
 
-## v3.2.0 (latest)
+## 20240502 (latest)
+
+* **GCC version: 9.5.0**
+* built: fix arm toolchain (.data layout in PIC mode)
+* phoenix-rtos-project commit: `6f87c3f`
+
+## v3.2.1
 
 * **GCC version: 9.5.0**
 * phoenix-rtos-project commit: `v3.2.1` (`df4e848`)
