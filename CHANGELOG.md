@@ -2,6 +2,11 @@
 
 ## NEXT VERSION
 
+## v3.2.2
+
+* **GCC version: 9.5.0**
+* phoenix-rtos-project commit: `v3.2.2` (`d7f4535`)
+
 ## 20240502 (latest)
 
 * **GCC version: 9.5.0**
