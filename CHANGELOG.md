@@ -2,6 +2,8 @@
 
 ## NEXT VERSION
 
+* build: install python3 and python3-yaml as global dependencies
+
 ## v3.2.2
 
 * **GCC version: 9.5.0**
