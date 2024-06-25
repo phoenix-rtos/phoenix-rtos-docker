@@ -2,14 +2,18 @@
 
 ## NEXT VERSION
 
+## 20240625 (latest)
+
+* **GCC version: 9.5.0**
 * build: install python3 and python3-yaml as global dependencies
+* phoenix-rtos-project commit: `4167633`
 
 ## v3.2.2
 
 * **GCC version: 9.5.0**
 * phoenix-rtos-project commit: `v3.2.2` (`d7f4535`)
 
-## 20240502 (latest)
+## 20240502
 
 * **GCC version: 9.5.0**
 * built: fix arm toolchain (.data layout in PIC mode)
