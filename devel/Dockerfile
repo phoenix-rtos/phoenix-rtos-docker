@@ -57,6 +57,19 @@ RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ]; then \
         cd ../.. && rm -rf qemu; \
     fi
 
+ARG QEMU_SYSTEM_VERSION=v9.0.2
+
+# apt doesn't provide qemu-system-arm that support running armv8r52-mps3an536 target
+# install qemu-system-arm v9.0.2 to run armv8r52-mps3an536 target
+RUN git clone https://github.com/qemu/qemu.git --branch ${QEMU_SYSTEM_VERSION} && \
+    cd qemu && \
+    mkdir build && cd build && \
+    ../configure --target-list="arm-softmmu" --disable-kvm --disable-xen --enable-gcrypt --bindir="/usr/bin" --prefix="/usr" && \
+    make -j 9 && \
+    strip --strip-unneeded qemu-system-arm && \
+    cp qemu-system-arm /usr/bin && \
+    cd ../.. && rm -rf qemu;
+
 ARG JLINK_VERSION=V794l
 
 # install Jlink tools for 32-bit armv7 architecture and 64-bit amd architecture
