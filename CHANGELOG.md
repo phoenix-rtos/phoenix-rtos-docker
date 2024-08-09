@@ -2,6 +2,8 @@
 
 ## NEXT VERSION
 
+* devel: add qemu-system-arm v9.0.2
+
 ## 20240625 (latest)
 
 * **GCC version: 9.5.0**
