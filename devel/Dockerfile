@@ -61,13 +61,15 @@ ARG QEMU_SYSTEM_VERSION=v9.0.2
 
 # apt doesn't provide qemu-system-arm that support running armv8r52-mps3an536 target
 # install qemu-system-arm v9.0.2 to run armv8r52-mps3an536 target
+# this version of qemu also did some enhancements for sparc architecture
+# so also install qemu-system-sparc v9.0.2 to run SPARC LEON3 target
 RUN git clone https://github.com/qemu/qemu.git --branch ${QEMU_SYSTEM_VERSION} && \
     cd qemu && \
     mkdir build && cd build && \
-    ../configure --target-list="arm-softmmu" --disable-kvm --disable-xen --enable-gcrypt --bindir="/usr/bin" --prefix="/usr" && \
+    ../configure --target-list=arm-softmmu,sparc-softmmu --disable-kvm --disable-xen --enable-gcrypt --bindir="/usr/bin" --prefix="/usr" && \
     make -j 9 && \
-    strip --strip-unneeded qemu-system-arm && \
-    cp qemu-system-arm /usr/bin && \
+    strip --strip-unneeded qemu-system-arm qemu-system-sparc && \
+    cp qemu-system-arm qemu-system-sparc /usr/bin && \
     cd ../.. && rm -rf qemu;
 
 ARG JLINK_VERSION=V794l

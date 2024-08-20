@@ -2,6 +2,7 @@
 
 ## NEXT VERSION
 
+* devel: add qemu-system-sparc v9.0.2
 * devel: add qemu-system-arm v9.0.2
 
 ## 20240625 (latest)
