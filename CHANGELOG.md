@@ -2,10 +2,16 @@
 
 ## NEXT VERSION
 
+## 20240827 (latest)
+
+* **GCC version: 9.5.0**
 * devel: add qemu-system-sparc v9.0.2
 * devel: add qemu-system-arm v9.0.2
+* phoenix-rtos-project commit:
+  * devel image: `d0f17a4`
+  * build image: `4167633`
 
-## 20240625 (latest)
+## 20240625
 
 * **GCC version: 9.5.0**
 * build: install python3 and python3-yaml as global dependencies
