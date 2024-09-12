@@ -2,9 +2,14 @@
 
 ## NEXT VERSION
 
-* build: install python3-jinja2 as global dependency
+## 20240912 (latest)
 
-## 20240827 (latest)
+* **GCC version: 9.5.0**
+* build: fix armv8-r and sparc libcpp/libgcc PIC
+* build: install python3-jinja2 as global dependency
+* phoenix-rtos-project commit: `2a3d557`
+
+## 20240827
 
 * **GCC version: 9.5.0**
 * devel: add qemu-system-sparc v9.0.2
@@ -27,7 +32,7 @@
 ## 20240502
 
 * **GCC version: 9.5.0**
-* built: fix arm toolchain (.data layout in PIC mode)
+* build: fix arm toolchain (.data layout in PIC mode)
 * phoenix-rtos-project commit: `6f87c3f`
 
 ## v3.2.1
