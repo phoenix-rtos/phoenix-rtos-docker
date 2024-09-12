@@ -2,6 +2,8 @@
 
 ## NEXT VERSION
 
+* build: install python3-jinja2 as global dependency
+
 ## 20240827 (latest)
 
 * **GCC version: 9.5.0**
