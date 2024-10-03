@@ -2,9 +2,16 @@
 
 ## NEXT VERSION
 
-## 20240912 (latest)
+## 20241003 (latest)
 
 * **GCC version: 9.5.0**
+* binutils version: 2.43
+* phoenix-rtos-project commit: `a59b0e7`
+
+## 20240912
+
+* **GCC version: 9.5.0**
+* binutils version: 2.34
 * build: fix armv8-r and sparc libcpp/libgcc PIC
 * build: install python3-jinja2 as global dependency
 * phoenix-rtos-project commit: `2a3d557`
