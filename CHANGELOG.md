@@ -2,6 +2,7 @@
 
 ## NEXT VERSION
 
+* bump base docker image vesrion `22.04` -> `24.04`
 * bump devel tools versions
   * xilinx qemu: `2023.1` -> `2024.1`
   * qemu: `9.0.2` -> `9.1.0`

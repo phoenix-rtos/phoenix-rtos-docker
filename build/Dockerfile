@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS build
+FROM ubuntu:24.04 AS build
 
 # notes:
 #  - each RUN/COPY creates new docker layer, try to keep them to the minimum
