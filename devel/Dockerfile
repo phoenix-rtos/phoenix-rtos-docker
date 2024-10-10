@@ -1,7 +1,6 @@
 ARG BASE_IMAGE_VERSION=latest
 FROM phoenixrtos/build:${BASE_IMAGE_VERSION}
 
-ARG DEVEL_XILINX_PLO_VERSION=2023.1
 ARG TARGETPLATFORM
 
 LABEL org.opencontainers.image.ref.name=devel
@@ -44,11 +43,11 @@ RUN mkdir -p /etc/udev/rules.d && \
 
 # install qemu from xilinx
 # qemu xilinx doesn't support 32-bit architecture, skip armv7 architectures
+ARG DEVEL_XILINX_VERSION=2024.1
 RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ]; then \
         git clone https://github.com/Xilinx/qemu.git && \
         cd qemu && \
-        git checkout tags/xilinx_v${DEVEL_XILINX_PLO_VERSION} && \
-        git submodule update --init dtc && \
+        git checkout tags/xilinx_v${DEVEL_XILINX_VERSION} && \
         mkdir build && cd build && \
         ../configure --target-list="aarch64-softmmu" --enable-fdt --disable-kvm --disable-xen --enable-gcrypt --bindir="/usr/bin" --prefix="/usr" && \
         make && \
@@ -57,7 +56,7 @@ RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ]; then \
         cd ../.. && rm -rf qemu; \
     fi
 
-ARG QEMU_SYSTEM_VERSION=v9.0.2
+ARG QEMU_SYSTEM_VERSION=v9.1.0
 
 # apt doesn't provide qemu-system-arm that support running armv8r52-mps3an536 target
 # install qemu-system-arm v9.0.2 to run armv8r52-mps3an536 target
@@ -72,7 +71,7 @@ RUN git clone https://github.com/qemu/qemu.git --branch ${QEMU_SYSTEM_VERSION} &
     cp qemu-system-arm qemu-system-sparc /usr/bin && \
     cd ../.. && rm -rf qemu;
 
-ARG JLINK_VERSION=V794l
+ARG JLINK_VERSION=V810b
 
 # install Jlink tools for 32-bit armv7 architecture and 64-bit amd architecture
 RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \

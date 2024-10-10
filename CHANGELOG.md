@@ -2,6 +2,11 @@
 
 ## NEXT VERSION
 
+* bump devel tools versions
+  * xilinx qemu: `2023.1` -> `2024.1`
+  * qemu: `9.0.2` -> `9.1.0`
+  * jlink tools: `V794l` -> `V810b`
+
 ## 20241003 (latest)
 
 * **GCC version: 9.5.0**
