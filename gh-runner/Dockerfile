@@ -90,9 +90,7 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 # install github actions runner
-RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \
-        GH_PLATFORM="arm"; \
-    elif [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
         GH_PLATFORM="x64"; \
     elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then \
         GH_PLATFORM="arm64"; \
@@ -108,10 +106,8 @@ RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \
 
 ARG JLINK_VERSION=V810b
 
-# install Jlink tools for 32-bit armv7 architecture and 64-bit amd architecture
-RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \
-        JLINK_FILENAME="JLink_Linux_${JLINK_VERSION}_arm.tgz"; \
-    elif [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
+# install Jlink tools for 64-bit arm architecture and 64-bit amd architecture
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
         JLINK_FILENAME="JLink_Linux_${JLINK_VERSION}_x86_64.tgz"; \
     elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then \
         JLINK_FILENAME="JLink_Linux_${JLINK_VERSION}_arm64.tgz"; \
