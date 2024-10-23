@@ -63,7 +63,7 @@ FROM ubuntu:24.04 as run
 
 ARG TARGETPLATFORM
 
-ARG GH_RUNNER_VERSION=2.309.0
+ARG GH_RUNNER_VERSION=2.320.0
 
 LABEL org.opencontainers.image.ref.name=gh-runner
 LABEL org.opencontainers.image.source=https://github.com/phoenix-rtos/phoenix-rtos-docker
