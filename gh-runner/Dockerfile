@@ -1,5 +1,5 @@
 ### WARN: multi-stage: BUILD STAGE ###
-FROM ubuntu:22.04 as build
+FROM ubuntu:24.04 as build
 
 # install host build environment
 RUN apt-get update && \
@@ -59,7 +59,7 @@ ENV PATH="/opt/phoenix/utils:${PATH}"
 
 
 ### WARN: multi-stage: run STAGE ###
-FROM ubuntu:22.04 as run
+FROM ubuntu:24.04 as run
 
 ARG TARGETPLATFORM
 
