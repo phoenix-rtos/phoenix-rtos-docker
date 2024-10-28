@@ -1,5 +1,12 @@
 # Changelog
 
+## NEXT VERSION
+
+* gh-runner: bump base docker image version `22.04` -> `24.04`
+* gh-runner: jlink tools: `V794l` -> `V810b`
+* gh-runner: bump gh runner version: `2.309.0` -> `2.320.0`
+* gh-runner: remove armv7 support
+
 ## 20241010 (beta)
 
 * bump base docker image vesrion `22.04` -> `24.04`
