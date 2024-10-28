@@ -80,6 +80,7 @@ RUN apt-get update && \
         wget \
         git \
         libhidapi-dev \
+        libicu-dev \
         python3-dev \
         python3-pip \
         xz-utils \
