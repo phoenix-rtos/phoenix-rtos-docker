@@ -1,13 +1,14 @@
 # Changelog
 
-## NEXT VERSION
+## 20241030 (gh-runner only)
 
 * gh-runner: bump base docker image version `22.04` -> `24.04`
 * gh-runner: jlink tools: `V794l` -> `V810b`
 * gh-runner: bump gh runner version: `2.309.0` -> `2.320.0`
 * gh-runner: remove armv7 support
+* phoenix-rtos-project: `3cef97a`
 
-## 20241010 (beta)
+## 20241010 (latest)
 
 * bump base docker image vesrion `22.04` -> `24.04`
 * bump devel tools versions
@@ -16,7 +17,7 @@
   * jlink tools: `V794l` -> `V810b`
 * phoenix-rtos-project commit: `7b495c8`
 
-## 20241003 (latest)
+## 20241003
 
 * **GCC version: 9.5.0**
 * binutils version: 2.43
