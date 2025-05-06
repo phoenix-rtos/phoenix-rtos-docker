@@ -1,12 +1,13 @@
 # Changelog
 
-## NEXT RELEASE
+## 20250506 (beta)
 
 * **GCC version: 14.2.0**
 * add `aarch64` toolchain
 * bump devel tools versions
   * xilinx qemu: `2024.1` -> `2024.2`
   * qemu: `9.1.0` -> `10.0.0`
+* phoenix-rtos-project commit: `7ae7a7c`
 
 ## 20241030 (gh-runner only)
 
