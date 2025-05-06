@@ -4,6 +4,9 @@
 
 * **GCC version: 14.2.0**
 * add `aarch64` toolchain
+* bump devel tools versions
+  * xilinx qemu: `2024.1` -> `2024.2`
+  * qemu: `9.1.0` -> `10.0.0`
 
 ## 20241030 (gh-runner only)
 
