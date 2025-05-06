@@ -1,5 +1,10 @@
 # Changelog
 
+## NEXT RELEASE
+
+* **GCC version: 14.2.0**
+* add `aarch64` toolchain
+
 ## 20241030 (gh-runner only)
 
 * gh-runner: bump base docker image version `22.04` -> `24.04`

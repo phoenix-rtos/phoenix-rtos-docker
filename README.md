@@ -7,7 +7,8 @@ Prebuilt images are available on [DockerHub](https://hub.docker.com/r/phoenixrto
 
 ### phoenixrtos/build
 
-Image with toolchains for `arm7v-a`, `armv7-m`, `ia32`, `riscv` and `sparc` targets.
+Image with toolchains for `arm7v-a/r`, `armv7-m`, `armv8m`, `armv8r`,
+`aarch64`, `ia32`, `riscv` and `sparc` targets.
 
 ### phoenixrtos/devel
 

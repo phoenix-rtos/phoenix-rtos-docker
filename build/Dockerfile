@@ -49,6 +49,7 @@ RUN set -ex; \
     mkdir -p /opt/phoenix && (cd phoenix-rtos-project && git rev-parse --short HEAD > /opt/phoenix/git-version) && \
     cd phoenix-rtos-project/phoenix-rtos-build/toolchain/ && \
     ./build-toolchain.sh arm-phoenix /opt/phoenix/ && \
+    ./build-toolchain.sh aarch64-phoenix /opt/phoenix/ && \
     ./build-toolchain.sh i386-pc-phoenix /opt/phoenix/ && \
     ./build-toolchain.sh riscv64-phoenix /opt/phoenix/ && \
     ./build-toolchain.sh sparc-phoenix /opt/phoenix/ && \
@@ -97,7 +98,7 @@ RUN set -ex; \
     cd .. && rm -rf Bear
 
 
-ENV PATH="/opt/phoenix/arm-phoenix/bin:/opt/phoenix/i386-pc-phoenix/bin:/opt/phoenix/riscv64-phoenix/bin:/opt/phoenix/sparc-phoenix/bin:${PATH}"
+ENV PATH="/opt/phoenix/arm-phoenix/bin:/opt/phoenix/aarch64-phoenix/bin:/opt/phoenix/i386-pc-phoenix/bin:/opt/phoenix/riscv64-phoenix/bin:/opt/phoenix/sparc-phoenix/bin:${PATH}"
 ENV PATH="/opt/bear/bin:${PATH}"
 
 COPY --chmod=0755 entrypoint.sh /usr/bin/
