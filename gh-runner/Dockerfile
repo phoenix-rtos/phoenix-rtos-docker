@@ -145,6 +145,9 @@ ENV PATH="/opt/venv/bin:${PATH}"
 RUN pip3 install --no-cache-dir \
     requests
 
+# install mcxn947 support for pyocd
+RUN pyocd pack install mcxn947
+
 COPY entry.py .
 
 ENTRYPOINT ["python3", "entry.py"]

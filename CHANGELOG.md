@@ -1,5 +1,9 @@
 # Changelog
 
+## 20250723 (gh-runner only)
+* **GCC version: 14.2.0**
+* add `mcxn947` support for pyocd in gh-runner
+
 ## 20250506 (latest)
 
 * **GCC version: 14.2.0**
