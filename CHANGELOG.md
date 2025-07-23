@@ -1,6 +1,6 @@
 # Changelog
 
-## 20250506 (beta)
+## 20250506 (latest)
 
 * **GCC version: 14.2.0**
 * add `aarch64` toolchain
@@ -17,8 +17,10 @@
 * gh-runner: remove armv7 support
 * phoenix-rtos-project: `3cef97a`
 
-## 20241010 (latest)
+## 20241010
 
+* **GCC version: 9.5.0**
+* binutils version: 2.43
 * bump base docker image vesrion `22.04` -> `24.04`
 * bump devel tools versions
   * xilinx qemu: `2023.1` -> `2024.1`
