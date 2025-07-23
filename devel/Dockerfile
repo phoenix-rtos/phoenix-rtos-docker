@@ -121,4 +121,7 @@ RUN git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.g
 
 ENV PATH="/opt/phoenix/utils:/opt/SEGGER/JLink:${PATH}"
 
+# install pyocd for mcxn platform and add support for it
+RUN pip3 install --no-cache-dir pyocd==0.37 && pyocd pack install mcxn947
+
 ENTRYPOINT ["/bin/bash", "-l", "-c"]

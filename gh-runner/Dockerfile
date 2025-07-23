@@ -141,9 +141,13 @@ COPY --from=build /usr/local/share/openocd /usr/local/share/openocd
 COPY --from=build /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:${PATH}"
 
-# install requests for entry.py
+# install requests for entry.py and pyocd for mcxn platform
 RUN pip3 install --no-cache-dir \
-    requests
+    requests \
+    pyocd
+
+# install mcxn947 support for pyocd
+RUN pyocd pack install mcxn947
 
 COPY entry.py .
 
