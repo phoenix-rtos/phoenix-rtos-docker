@@ -2,7 +2,8 @@
 
 ## NEXT VERSION
 
-devel, gh-runner: add pyocd with `mcxn947` support
+* devel, gh-runner: add pyocd with `mcxn947` support
+* devel: install trace hostutils dependencies
 
 ## 20250506 (latest)
 
