@@ -124,4 +124,23 @@ ENV PATH="/opt/phoenix/utils:/opt/SEGGER/JLink:${PATH}"
 # install pyocd for mcxn platform and add support for it
 RUN pip3 install --no-cache-dir pyocd==0.37 && pyocd pack install mcxn947
 
+# install runtime dependencies for trace hostutils
+# NOTE: as of 2025-08-29 there is no pip package for bt2 bindings.
+# python3-bt2 APT package installs the module to /usr/lib/python3/dist-packages
+# which is not in sys.path under docker. To have control over modules available
+# in virtual env, the bt2 from dist-packages is symlinked to custom
+# PYTHON_APT_LIBS_PATH directory contained in sys.path
+ENV PYTHON_APT_LIBS_PATH="/opt/venv/lib/apt-libs"
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive \
+    apt-get install -y --no-install-recommends \
+        protobuf-compiler=3.21.12-* \
+        babeltrace2=2.0.5-* \
+        python3-bt2=2.0.5-* && \
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir -p ${PYTHON_APT_LIBS_PATH} && \
+    ln -sf /usr/lib/python3/dist-packages/bt2 ${PYTHON_APT_LIBS_PATH} && \
+    pip3 install --upgrade protobuf==6.32.0 --no-cache-dir
+ENV PYTHONPATH="${PYTHON_APT_LIBS_PATH}"
+
 ENTRYPOINT ["/bin/bash", "-l", "-c"]
