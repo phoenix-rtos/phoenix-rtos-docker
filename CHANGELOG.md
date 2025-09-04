@@ -1,11 +1,15 @@
 # Changelog
 
-## NEXT VERSION
+## 20250904 (latest)
 
+* **GCC version: 14.2.0**
 * devel, gh-runner: add pyocd with `mcxn947` support
 * devel: install trace hostutils dependencies
+* phoenix-rtos-project commit: 
+  * devel: `d44ca4a`
+  * build: `7ae7a7c`
 
-## 20250506 (latest)
+## 20250506
 
 * **GCC version: 14.2.0**
 * add `aarch64` toolchain
