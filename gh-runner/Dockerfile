@@ -1,5 +1,5 @@
 ### WARN: multi-stage: BUILD STAGE ###
-FROM ubuntu:24.04 as build
+FROM ubuntu:24.04 AS build
 
 # install host build environment
 RUN apt-get update && \
@@ -23,17 +23,10 @@ RUN apt-get update && \
         python3-venv \
         tclsh \
         wget \
-    && rm -rf /var/lib/apt/lists/*
-
-
-# install openocd in 0.12 version
-RUN mkdir -p /etc/udev/rules.d && \
-    git clone https://github.com/openocd-org/openocd.git --branch v0.12.0 && \
-    cd openocd && \
-    ./bootstrap && \
-    ./configure --enable-stlink && make install -j 9 && \
-    cp contrib/60-openocd.rules /etc/udev/rules.d/ && \
-    cd ../ && rm -rf openocd
+        openocd && \
+        mkdir -p /etc/udev/rules.d && \
+        cp /lib/udev/rules.d/60-openocd.rules /etc/udev/rules.d/60-openocd.rules && \
+        rm -rf /var/lib/apt/lists/*
 
 # prepare virtual env for test runner
 RUN python3 -m venv /opt/venv
@@ -59,7 +52,7 @@ ENV PATH="/opt/phoenix/utils:${PATH}"
 
 
 ### WARN: multi-stage: run STAGE ###
-FROM ubuntu:24.04 as run
+FROM ubuntu:24.04 AS run
 
 ARG TARGETPLATFORM
 
@@ -75,12 +68,15 @@ WORKDIR /actions-runner
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
+        build-essential \
         ca-certificates \
         curl \
         wget \
         git \
+        libcapstone-dev \
         libhidapi-dev \
         libicu-dev \
+        pkgconf \
         python3-dev \
         python3-pip \
         xz-utils \
@@ -134,8 +130,8 @@ COPY --from=build /opt/phoenix/utils /opt/phoenix/utils
 ENV PATH="/opt/phoenix/utils:${PATH}"
 
 # get openocd
-COPY --from=build /usr/local/bin/openocd /usr/local/bin
-COPY --from=build /usr/local/share/openocd /usr/local/share/openocd
+COPY --from=build /usr/bin/openocd /usr/bin/openocd
+COPY --from=build /usr/share/openocd /usr/share/openocd
 
 # get virtual env for runner
 COPY --from=build /opt/venv /opt/venv
