@@ -1,5 +1,5 @@
 ### WARN: multi-stage: BUILD STAGE ###
-FROM ubuntu:24.04 as build
+FROM ubuntu:24.04 AS build
 
 # install host build environment
 RUN apt-get update && \
@@ -40,6 +40,10 @@ RUN python3 -m venv /opt/venv
 
 ENV PATH="/opt/venv/bin:$PATH"
 
+# install pyocd at build stage because some dependencies need to be built on arm64
+RUN pip3 install --no-cache-dir \
+    pyocd
+
 # use to check-out specific commit of phoenix-rtos-project (--build-arg PHOENIX_PROJECT_REF=release/3.0)
 ARG PHOENIX_PROJECT_REF=HEAD
 
@@ -59,11 +63,11 @@ ENV PATH="/opt/phoenix/utils:${PATH}"
 
 
 ### WARN: multi-stage: run STAGE ###
-FROM ubuntu:24.04 as run
+FROM ubuntu:24.04 AS run
 
 ARG TARGETPLATFORM
 
-ARG GH_RUNNER_VERSION=2.320.0
+ARG GH_RUNNER_VERSION=2.328.0
 
 LABEL org.opencontainers.image.ref.name=gh-runner
 LABEL org.opencontainers.image.source=https://github.com/phoenix-rtos/phoenix-rtos-docker
@@ -105,7 +109,7 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
     && rm -rf /var/lib/apt/lists/*
 
 
-ARG JLINK_VERSION=V810b
+ARG JLINK_VERSION=V868
 
 # install Jlink tools for 64-bit arm architecture and 64-bit amd architecture
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
@@ -141,10 +145,9 @@ COPY --from=build /usr/local/share/openocd /usr/local/share/openocd
 COPY --from=build /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:${PATH}"
 
-# install requests for entry.py and pyocd for mcxn platform
+# install requests for entry.py
 RUN pip3 install --no-cache-dir \
-    requests \
-    pyocd
+    requests
 
 # install mcxn947 support for pyocd
 RUN pyocd pack install mcxn947
