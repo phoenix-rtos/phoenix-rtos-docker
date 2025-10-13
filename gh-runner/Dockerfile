@@ -67,7 +67,7 @@ FROM ubuntu:24.04 AS run
 
 ARG TARGETPLATFORM
 
-ARG GH_RUNNER_VERSION=2.320.0
+ARG GH_RUNNER_VERSION=2.328.0
 
 LABEL org.opencontainers.image.ref.name=gh-runner
 LABEL org.opencontainers.image.source=https://github.com/phoenix-rtos/phoenix-rtos-docker
@@ -109,7 +109,7 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
     && rm -rf /var/lib/apt/lists/*
 
 
-ARG JLINK_VERSION=V810b
+ARG JLINK_VERSION=V876
 
 # install Jlink tools for 64-bit arm architecture and 64-bit amd architecture
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
