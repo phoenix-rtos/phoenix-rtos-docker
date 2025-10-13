@@ -71,7 +71,7 @@ RUN git clone https://github.com/qemu/qemu.git --branch ${QEMU_SYSTEM_VERSION} &
     cp qemu-system-arm qemu-system-sparc /usr/bin && \
     cd ../.. && rm -rf qemu;
 
-ARG JLINK_VERSION=V810b
+ARG JLINK_VERSION=V876
 
 # install Jlink tools for 32-bit armv7 architecture and 64-bit amd architecture
 RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then \

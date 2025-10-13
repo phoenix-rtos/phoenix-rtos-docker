@@ -4,6 +4,8 @@
 
 * devel, gh-runner: add pyocd with `mcxn947` support
 * devel: install trace hostutils dependencies
+* devel, gh-runner: jlink tools: `V810b` -> `V876`
+* gh-runner: bump gh runner version: `2.320.0` -> `2.328.0`
 
 ## 20250506 (latest)
 
