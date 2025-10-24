@@ -27,7 +27,7 @@ gh-runner
 ```bash
 # additional steps may be needed for building image - check builders using command docker buildx ls
 # run container with all archs
-docker run --rm --privileged multiarch/qemu-user-static --reset always -p yes
+docker run --rm --privileged tonistiigi/binfmt --install all
 # change default buildx container
 docker buildx create --name multiarch --driver docker-container --use
 docker buildx inspect --bootstrap
