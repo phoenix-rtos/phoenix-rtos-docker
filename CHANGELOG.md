@@ -2,12 +2,18 @@
 
 ## NEXT VERSION
 
+## 20251028 (latest)
+
+* **GCC version: 14.2.0**
 * devel, gh-runner: add pyocd with `mcxn947` support
 * devel: install trace hostutils dependencies
 * devel, gh-runner: jlink tools: `V810b` -> `V876`
 * gh-runner: bump gh runner version: `2.320.0` -> `2.328.0`
+* phoenix-rtos-project commit:
+  * devel image: `3ddd8cb`
+  * build image: `7ae7a7c`
 
-## 20250506 (latest)
+## 20250506
 
 * **GCC version: 14.2.0**
 * add `aarch64` toolchain
