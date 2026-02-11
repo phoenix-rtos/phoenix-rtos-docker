@@ -66,7 +66,7 @@ RUN set -ex; \
 #   xxd: stm32 image
 #   vim: 'ex' needed for lighttpd build.sh
 #   cmake: needed for zlib build.sh
-#   python3, python3-yaml, python3-jinja2: phoenix-rtos-build tools
+#   python3, python3-yaml, python3-jinja2, python3-pycryptodome: phoenix-rtos-build tools
 # git: safe.directory: as we're usually running image as root, ensure `git` won't complain about file ownership
 # copy to global config to share for all users / all HOMEs
 
@@ -84,6 +84,7 @@ RUN apt-get update && \
         python3 \
         python3-yaml \
         python3-jinja2 \
+        python3-pycryptodome \
     && rm -rf /var/lib/apt/lists/* \
     && git config --global --add safe.directory '*' \
     && cp /root/.gitconfig /etc/gitconfig
