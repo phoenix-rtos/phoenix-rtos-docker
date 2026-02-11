@@ -2,6 +2,8 @@
 
 ## NEXT VERSION
 
+* build: install python3-pycryptodome
+
 ## 20251028 (latest)
 
 * **GCC version: 14.2.0**
