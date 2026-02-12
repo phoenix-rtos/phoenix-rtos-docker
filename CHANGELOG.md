@@ -2,12 +2,15 @@
 
 ## NEXT VERSION
 
+## 20260212 (latest)
+
 * build: install python3-pycryptodome
 * bump devel tools versions
   * xilinx qemu: `2024.2` -> `2025.2`
   * qemu: `10.0.0` -> `10.2.1`
+* phoenix-rtos-project commit: `8e05efe`
 
-## 20251028 (latest)
+## 20251028
 
 * **GCC version: 14.2.0**
 * devel, gh-runner: add pyocd with `mcxn947` support
