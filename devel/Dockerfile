@@ -43,7 +43,7 @@ RUN mkdir -p /etc/udev/rules.d && \
 
 # install qemu from xilinx
 # qemu xilinx doesn't support 32-bit architecture, skip armv7 architectures
-ARG DEVEL_XILINX_VERSION=2024.2
+ARG DEVEL_XILINX_VERSION=2025.2
 RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ]; then \
         git clone https://github.com/Xilinx/qemu.git && \
         cd qemu && \
@@ -56,7 +56,7 @@ RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ]; then \
         cd ../.. && rm -rf qemu; \
     fi
 
-ARG QEMU_SYSTEM_VERSION=v10.0.0
+ARG QEMU_SYSTEM_VERSION=v10.2.1
 
 # on 24.04 apt doesn't provide qemu-system-arm that support running armv8r52-mps3an536 target
 # install qemu-system-arm > v9.0.2 to run armv8r52-mps3an536 target

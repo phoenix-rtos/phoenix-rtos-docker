@@ -3,6 +3,9 @@
 ## NEXT VERSION
 
 * build: install python3-pycryptodome
+* bump devel tools versions
+  * xilinx qemu: `2024.2` -> `2025.2`
+  * qemu: `10.0.0` -> `10.2.1`
 
 ## 20251028 (latest)
 
