@@ -2,6 +2,8 @@
 
 ## NEXT VERSION
 
+* devel, gh-runner: add support for stm32n6 in openocd
+
 ## 20260212 (latest)
 
 * build: install python3-pycryptodome
