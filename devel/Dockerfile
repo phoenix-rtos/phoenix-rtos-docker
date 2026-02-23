@@ -33,9 +33,11 @@ RUN apt-get update && \
     && c_rehash # needed for armv7 CA certs to work
 
 # install openocd in 0.12 version
+# cherry-pick commit adding support for stm32n6
 RUN mkdir -p /etc/udev/rules.d && \
     git clone https://github.com/openocd-org/openocd.git --branch v0.12.0 && \
     cd openocd && \
+    git cherry-pick --no-commit 7d688bc500e011d1c39c17e2a8e402c8f1bcd58e && \
     ./bootstrap && \
     ./configure --enable-stlink && make install && \
     cp contrib/60-openocd.rules /etc/udev/rules.d/ && \
