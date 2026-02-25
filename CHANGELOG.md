@@ -2,6 +2,8 @@
 
 ## NEXT VERSION
 
+* build: install python3-{packaging,resolvelib,pyparsing,rich}, jq
+
 ## 20260212 (latest)
 
 * build: install python3-pycryptodome
