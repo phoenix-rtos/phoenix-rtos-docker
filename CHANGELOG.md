@@ -3,6 +3,7 @@
 ## NEXT VERSION
 
 * build: install python3-{packaging,resolvelib,pyparsing,rich}, jq
+* build: install device-tree-compiler
 
 ## 20260212 (latest)
 

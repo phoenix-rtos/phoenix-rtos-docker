@@ -67,6 +67,7 @@ RUN set -ex; \
 #   vim: 'ex' needed for lighttpd build.sh
 #   cmake: needed for zlib build.sh
 #   python3, python3-{yaml,jinja2,pycryptodome,packaging,resolvelib,pyparsing,rich}, jq: phoenix-rtos-build tools
+#   device-tree-compiler: dtc is needed for riscv64 builds
 # git: safe.directory: as we're usually running image as root, ensure `git` won't complain about file ownership
 # copy to global config to share for all users / all HOMEs
 
@@ -90,6 +91,7 @@ RUN apt-get update && \
         python3-pyparsing \
         python3-rich \
         jq \
+        device-tree-compiler \
     && rm -rf /var/lib/apt/lists/* \
     && git config --global --add safe.directory '*' \
     && cp /root/.gitconfig /etc/gitconfig
