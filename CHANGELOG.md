@@ -2,10 +2,12 @@
 
 ## NEXT VERSION
 
+## 20260312 (latest)
+
 * build: install python3-{packaging,resolvelib,pyparsing,rich}, jq
 * build: install device-tree-compiler
 
-## 20260212 (latest)
+## 20260212
 
 * build: install python3-pycryptodome
 * bump devel tools versions
