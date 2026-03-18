@@ -35,6 +35,11 @@ RUN mkdir -p /etc/udev/rules.d && \
     cp contrib/60-openocd.rules /etc/udev/rules.d/ && \
     cd ../ && rm -rf openocd
 
+# inject Cortex-R5 debug target into the default OpenOCD ZynqMP config
+RUN CONFIG_PATH="/usr/local/share/openocd/scripts/target/xilinx_zynqmp.cfg" && \
+    if [ ! -f "$CONFIG_PATH" ]; then echo "Error: $CONFIG_PATH not found" && exit 1; fi && \
+    sed -i '/eval \$_smp_command/a target create $_CHIPNAME.r5.0 cortex_r4 -dap $_CHIPNAME.dap -dbgbase 0x803f0000 -coreid 0' "$CONFIG_PATH"
+
 # prepare virtual env for test runner
 RUN python3 -m venv /opt/venv
 

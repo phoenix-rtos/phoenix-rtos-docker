@@ -56,6 +56,11 @@ RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ]; then \
         cd ../.. && rm -rf qemu; \
     fi
 
+# inject Cortex-R5 debug target into the default OpenOCD ZynqMP config
+RUN CONFIG_PATH="/usr/local/share/openocd/scripts/target/xilinx_zynqmp.cfg" && \
+    if [ ! -f "$CONFIG_PATH" ]; then echo "Error: $CONFIG_PATH not found" && exit 1; fi && \
+    sed -i '/eval \$_smp_command/a target create $_CHIPNAME.r5.0 cortex_r4 -dap $_CHIPNAME.dap -dbgbase 0x803f0000 -coreid 0' "$CONFIG_PATH"
+
 ARG QEMU_SYSTEM_VERSION=v10.2.1
 
 # on 24.04 apt doesn't provide qemu-system-arm that support running armv8r52-mps3an536 target
