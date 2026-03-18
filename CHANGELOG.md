@@ -2,7 +2,11 @@
 
 ## NEXT VERSION
 
-## 20260312 (latest)
+## 20260318
+
+* devel: openocd armv7r5-zynqmp support
+
+## 20260312
 
 * build: install python3-{packaging,resolvelib,pyparsing,rich}, jq
 * build: install device-tree-compiler
