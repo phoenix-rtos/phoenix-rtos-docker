@@ -83,6 +83,7 @@ RUN apt-get update && \
         xxd \
         cmake \
         python3 \
+        python3-pip \
         python3-yaml \
         python3-jinja2 \
         python3-pycryptodome \
@@ -96,6 +97,11 @@ RUN apt-get update && \
     && git config --global --add safe.directory '*' \
     && cp /root/.gitconfig /etc/gitconfig
 
+# phoenix-rtos build dependencies
+# littlefs-python is not available via apt, so pip is required.
+# installed globally (no venv) to keep this base image simple and compatible
+# with downstream projects and to avoid issues with nested environments.
+RUN pip3 install --no-cache-dir littlefs-python==0.17.1 --break-system-packages
 
 # Add bear tool to be able to generate compilation database during build step
 RUN set -ex; \
