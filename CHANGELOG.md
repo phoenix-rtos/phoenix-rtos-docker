@@ -2,6 +2,8 @@
 
 ## NEXT VERSION
 
+* devel: delete python3-pip
+
 ## 20260312 (latest)
 
 * build: install python3-{packaging,resolvelib,pyparsing,rich}, jq

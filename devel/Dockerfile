@@ -14,7 +14,6 @@ RUN apt-get update && \
         ca-certificates \
         python3-dev \
         python3-venv \
-        python3-pip \
         opensbi \
         qemu-system-i386 \
         qemu-system-misc \
