@@ -2,7 +2,12 @@
 
 ## NEXT VERSION
 
-## 20260312 (latest)
+## 20260409 (latest)
+
+* build: install littlefs-python
+* phoenix-rtos-project commit: `a88f15b`
+
+## 20260312
 
 * build: install python3-{packaging,resolvelib,pyparsing,rich}, jq
 * build: install device-tree-compiler
