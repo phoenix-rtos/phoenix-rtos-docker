@@ -2,6 +2,9 @@
 
 ## NEXT VERSION
 
+* build: install littlefs-python
+* move python3-pip from devel to build image
+
 ## 20260312 (latest)
 
 * build: install python3-{packaging,resolvelib,pyparsing,rich}, jq
