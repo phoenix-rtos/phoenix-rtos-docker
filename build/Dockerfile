@@ -64,7 +64,6 @@ RUN set -ex; \
 #   mtd-utils: jffs2 image (imx6ull)
 #   genext2fs: ext2 image (ia32)
 #   xxd: stm32 image
-#   vim: 'ex' needed for lighttpd build.sh
 #   cmake: needed for zlib build.sh
 #   python3, python3-{yaml,jinja2,pycryptodome,packaging,resolvelib,pyparsing,rich}, jq: phoenix-rtos-build tools
 #   device-tree-compiler: dtc is needed for riscv64 builds
@@ -79,7 +78,6 @@ RUN apt-get update && \
         genext2fs \
         libhidapi-dev \
         mtd-utils \
-        vim \
         xxd \
         cmake \
         python3 \
