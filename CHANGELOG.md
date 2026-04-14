@@ -1,11 +1,14 @@
 # Changelog
 
-## NEXT VERSION
+## NEXT VERSION 
+
+## 20260414 (latest)
 
 * build: install littlefs-python
 * move python3-pip from devel to build image
+* phoenix-rtos-project commit: `7b58630`
 
-## 20260312 (latest)
+## 20260312
 
 * build: install python3-{packaging,resolvelib,pyparsing,rich}, jq
 * build: install device-tree-compiler
