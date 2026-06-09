@@ -1,0 +1,14 @@
+gh-runner/entry.py
+  h_9f2d068a164dcf 86
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.4.2",
+  "base_commit_sha": "6d2ce4d5f98e73ee4975102e51b1d98054ef3daf",
+  "prompts": {},
+  "humans": {
+    "h_9f2d068a164dcf": {
+      "author": "lukkrusz <lukasz.kruszynski@phoenix-rtos.com>"
+    }
+  }
+}
