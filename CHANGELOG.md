@@ -9,6 +9,7 @@
   * fix `libusb-1.0` -> `libusb-1.0-0-dev` in build stage, add `libusb-1.0-0` runtime to run stage
   * trim run stage dependencies (remove unused `python3-dev`, `python3-pip`, `xz-utils`)
   * bump gh runner version: `2.328.0` -> `2.335.1`
+* gh-runner: let only the runner config persist inside the volume
 
 ## 20260414 (latest)
 
