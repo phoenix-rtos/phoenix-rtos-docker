@@ -1,0 +1,20 @@
+gh-runner/entry.py
+  s_d412a5e1865ef4::t_38e2d7951d76f5 80-90,106,110-111
+  s_d412a5e1865ef4::t_809b2f90e2cfe6 98,105,108,112-113
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.4.2",
+  "base_commit_sha": "7ee886988bc004b1e80fcf91a862045f1dca398f",
+  "prompts": {},
+  "sessions": {
+    "s_d412a5e1865ef4": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "01ef1cb5-729c-448f-9be3-64385092e6de",
+        "model": "copilot/claude-opus-4.8"
+      },
+      "human_author": "lukkrusz <lukasz.kruszynski@phoenix-rtos.com>"
+    }
+  }
+}
