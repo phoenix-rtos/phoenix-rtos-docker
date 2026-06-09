@@ -1,8 +1,14 @@
 # Changelog
 
-## NEXT VERSION 
+## NEXT VERSION
 
 * build: install yacc
+* gh-runner: improve Dockerfile
+  * stage all build artifacts in a single COPY layer
+  * fix missing `60-openocd.rules` copy to run stage
+  * fix `libusb-1.0` -> `libusb-1.0-0-dev` in build stage, add `libusb-1.0-0` runtime to run stage
+  * trim run stage dependencies (remove unused `python3-dev`, `python3-pip`, `xz-utils`)
+  * bump gh runner version: `2.328.0` -> `2.335.1`
 
 ## 20260414 (latest)
 

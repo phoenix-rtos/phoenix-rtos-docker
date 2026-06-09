@@ -11,9 +11,8 @@ RUN apt-get update && \
         curl \
         libatomic1 \
         libhidapi-dev \
-        libusb-1.0 \
+        libusb-1.0-0-dev \
         gcc \
-        gdb-multiarch \
         git \
         libtool \
         make \
@@ -22,13 +21,12 @@ RUN apt-get update && \
         python3-pip \
         python3-venv \
         tclsh \
-        wget \
     && rm -rf /var/lib/apt/lists/*
 
 
 # install openocd in 0.12 version
 RUN mkdir -p /etc/udev/rules.d && \
-    git clone https://github.com/openocd-org/openocd.git --branch v0.12.0 && \
+    git clone --depth 1 https://github.com/openocd-org/openocd.git --branch v0.12.0 && \
     cd openocd && \
     ./bootstrap && \
     ./configure --enable-stlink && make install -j 9 && \
@@ -40,9 +38,9 @@ RUN python3 -m venv /opt/venv
 
 ENV PATH="/opt/venv/bin:$PATH"
 
-# install pyocd at build stage because some dependencies need to be built on arm64
-RUN pip3 install --no-cache-dir \
-    pyocd
+# install all dependencies here in the build stage as some need to be compiled on arm64
+RUN pip3 install --no-cache-dir pyocd requests && \
+    pyocd pack install mcxn947
 
 # use to check-out specific commit of phoenix-rtos-project (--build-arg PHOENIX_PROJECT_REF=release/3.0)
 ARG PHOENIX_PROJECT_REF=HEAD
@@ -59,7 +57,16 @@ RUN git clone --recursive https://github.com/phoenix-rtos/phoenix-rtos-project.g
     cd .. && rm -rf phoenix-rtos-project && \
     chmod -R a+rX /opt/phoenix/utils
 
-ENV PATH="/opt/phoenix/utils:${PATH}"
+# stage every run-stage artifact under a single tree so it can be
+# copied into the final image in one layer
+RUN mkdir -p /rootfs/etc/udev/rules.d /rootfs/opt /rootfs/usr/local/bin \
+             /rootfs/usr/local/share /rootfs/root/.local/share && \
+    cp /etc/udev/rules.d/60-openocd.rules /rootfs/etc/udev/rules.d/ && \
+    mv /opt/phoenix /rootfs/opt/phoenix && \
+    mv /usr/local/bin/openocd /rootfs/usr/local/bin/ && \
+    mv /usr/local/share/openocd /rootfs/usr/local/share/openocd && \
+    mv /opt/venv /rootfs/opt/venv && \
+    mv /root/.local/share/cmsis-pack-manager /rootfs/root/.local/share/cmsis-pack-manager
 
 
 ### WARN: multi-stage: run STAGE ###
@@ -67,13 +74,13 @@ FROM ubuntu:24.04 AS run
 
 ARG TARGETPLATFORM
 
-ARG GH_RUNNER_VERSION=2.328.0
+ARG GH_RUNNER_VERSION=2.335.1
+ARG JLINK_VERSION=V876
 
 LABEL org.opencontainers.image.ref.name=gh-runner
 LABEL org.opencontainers.image.source=https://github.com/phoenix-rtos/phoenix-rtos-docker
 
 ENV RUNNER_ALLOW_RUNASROOT=true
-
 WORKDIR /actions-runner
 
 RUN apt-get update && \
@@ -84,10 +91,9 @@ RUN apt-get update && \
         wget \
         git \
         libhidapi-dev \
+        libusb-1.0-0 \
         libicu-dev \
-        python3-dev \
-        python3-pip \
-        xz-utils \
+        python3 \
         uhubctl \
         libatomic1 \
         gdb-multiarch \
@@ -108,8 +114,6 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
     && DEBIAN_FRONTEND=noninteractive ./bin/installdependencies.sh \
     && rm -rf /var/lib/apt/lists/*
 
-
-ARG JLINK_VERSION=V876
 
 # install Jlink tools for 64-bit arm architecture and 64-bit amd architecture
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
@@ -132,25 +136,9 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
 
 ENV PATH="/opt/SEGGER/JLink:${PATH}"
 
-
-# get phoenix-rtos host utils
-COPY --from=build /opt/phoenix/utils /opt/phoenix/utils
-ENV PATH="/opt/phoenix/utils:${PATH}"
-
-# get openocd
-COPY --from=build /usr/local/bin/openocd /usr/local/bin
-COPY --from=build /usr/local/share/openocd /usr/local/share/openocd
-
-# get virtual env for runner
-COPY --from=build /opt/venv /opt/venv
-ENV PATH="/opt/venv/bin:${PATH}"
-
-# install requests for entry.py
-RUN pip3 install --no-cache-dir \
-    requests
-
-# install mcxn947 support for pyocd
-RUN pyocd pack install mcxn947
+# copy all build-stage artifacts in a single layer
+COPY --from=build /rootfs /
+ENV PATH="/opt/phoenix/utils:/opt/venv/bin:${PATH}"
 
 COPY entry.py .
 
