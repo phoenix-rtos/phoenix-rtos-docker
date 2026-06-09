@@ -1,0 +1,17 @@
+gh-runner/Dockerfile
+  h_9f2d068a164dcf 4-6,46-47,49,58-59,65-66,129-130,132-133
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.4.2",
+  "base_commit_sha": "05dbf7375b52b3d0cbfc0546d059d732d7acb740",
+  "prompts": {},
+  "humans": {
+    "h_70553e9b9e479c": {
+      "author": "Łukasz Kruszyński"
+    },
+    "h_9f2d068a164dcf": {
+      "author": "lukkrusz <lukasz.kruszynski@phoenix-rtos.com>"
+    }
+  }
+}
