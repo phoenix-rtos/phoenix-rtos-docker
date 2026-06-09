@@ -1,0 +1,14 @@
+CHANGELOG.md
+  h_9f2d068a164dcf 4-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.4.2",
+  "base_commit_sha": "b81919a6c1d9225b8f6e1a75ff09d8e6c67ff770",
+  "prompts": {},
+  "humans": {
+    "h_9f2d068a164dcf": {
+      "author": "lukkrusz <lukasz.kruszynski@phoenix-rtos.com>"
+    }
+  }
+}
