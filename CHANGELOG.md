@@ -2,6 +2,8 @@
 
 ## NEXT VERSION 
 
+* build: install yacc
+
 ## 20260414 (latest)
 
 * build: install littlefs-python
