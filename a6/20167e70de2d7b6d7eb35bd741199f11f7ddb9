@@ -1,0 +1,14 @@
+gh-runner/Dockerfile
+  h_9f2d068a164dcf 31,96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.4.2",
+  "base_commit_sha": "a620167e70de2d7b6d7eb35bd741199f11f7ddb9",
+  "prompts": {},
+  "humans": {
+    "h_9f2d068a164dcf": {
+      "author": "lukkrusz <lukasz.kruszynski@phoenix-rtos.com>"
+    }
+  }
+}
