@@ -1,0 +1,25 @@
+gh-runner/Dockerfile
+  s_344a1c717560e7::t_8067d08bce07ce 45
+  h_9f2d068a164dcf 41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.4.2",
+  "base_commit_sha": "5b06ded82aaddd7e5ad3ad58618f82341d1656af",
+  "prompts": {},
+  "humans": {
+    "h_9f2d068a164dcf": {
+      "author": "lukkrusz <lukasz.kruszynski@phoenix-rtos.com>"
+    }
+  },
+  "sessions": {
+    "s_344a1c717560e7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5b71f31f-b85b-41e4-9a4c-630ee60cc867",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "lukkrusz <lukasz.kruszynski@phoenix-rtos.com>"
+    }
+  }
+}
