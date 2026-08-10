@@ -2,6 +2,8 @@
 
 ## NEXT VERSION
 
+## 20260810 (latest)
+
 * build: install yacc
 * gh-runner: improve Dockerfile
   * stage all build artifacts in a single COPY layer
@@ -10,8 +12,9 @@
   * trim run stage dependencies (remove unused `python3-dev`, `python3-pip`, `xz-utils`)
   * bump gh runner version: `2.328.0` -> `2.335.1`
 * gh-runner: let only the runner config persist inside the volume
+* phoenix-rtos-project commit: `53c283c`
 
-## 20260414 (latest)
+## 20260414
 
 * build: install littlefs-python
 * move python3-pip from devel to build image
