@@ -2,6 +2,8 @@
 
 ## NEXT VERSION
 
+* devel: note why xilinx qemu stays on `2025.2`
+
 ## 20260810 (latest)
 
 * build: install yacc

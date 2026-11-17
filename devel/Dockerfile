@@ -42,6 +42,7 @@ RUN mkdir -p /etc/udev/rules.d && \
 
 # install qemu from xilinx
 # qemu xilinx doesn't support 32-bit architecture, skip armv7 architectures
+# don't bump: xilinx_v2026.2 (QEMU 10.2) runs aarch64 tests ~13% slower, ~1.5x with -icount (2026.1.x is still 8.2.7)
 ARG DEVEL_XILINX_VERSION=2025.2
 RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ]; then \
         git clone https://github.com/Xilinx/qemu.git && \
