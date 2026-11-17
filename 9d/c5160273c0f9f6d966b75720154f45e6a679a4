@@ -1,0 +1,21 @@
+CHANGELOG.md
+  s_4ae779d94169d8::t_257eb3bbb37d77 7
+devel/Dockerfile
+  s_4ae779d94169d8::t_ca885d7b3ef769 54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9dc5160273c0f9f6d966b75720154f45e6a679a4",
+  "prompts": {},
+  "sessions": {
+    "s_4ae779d94169d8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4737c82f-3368-408a-8236-bcb531f7d028",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Marek Białowąs <marek.bialowas@phoenix-rtos.com>"
+    }
+  }
+}
