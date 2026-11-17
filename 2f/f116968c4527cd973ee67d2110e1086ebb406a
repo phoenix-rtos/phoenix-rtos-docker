@@ -1,7 +1,10 @@
 CHANGELOG.md
   s_4ae779d94169d8::t_ec53c7dfe25464 7
+  s_4ae779d94169d8::t_10799f75f80ea4 7
 devel/Dockerfile
   s_4ae779d94169d8::t_a849f06d18d446 58
+  s_4ae779d94169d8::t_efbeba5f3c26af 58
+  s_4ae779d94169d8::t_11701668e2def1 58
 ---
 {
   "schema_version": "authorship/3.0.0",
