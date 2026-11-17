@@ -1,0 +1,19 @@
+devel/Dockerfile
+  s_4ae779d94169d8::t_11701668e2def1 54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "736957a50b2f82862f621e16370af2656299caa8",
+  "prompts": {},
+  "sessions": {
+    "s_4ae779d94169d8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4737c82f-3368-408a-8236-bcb531f7d028",
+        "model": "unknown"
+      },
+      "human_author": "Marek Białowąs <marek.bialowas@phoenix-rtos.com>"
+    }
+  }
+}
