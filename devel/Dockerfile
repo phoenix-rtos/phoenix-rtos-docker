@@ -51,7 +51,7 @@ RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ]; then \
         git checkout tags/xilinx_v${DEVEL_XILINX_VERSION} && \
         mkdir build && cd build && \
         ../configure --target-list="aarch64-softmmu" --enable-fdt --disable-kvm --disable-xen --enable-gcrypt --enable-lto --bindir="/usr/bin" --prefix="/usr" && \
-        make && \
+        make -j 9 && \
         strip --strip-unneeded aarch64-softmmu/qemu-system-aarch64 && \
         cp aarch64-softmmu/qemu-system-aarch64 /usr/bin && \
         cd ../.. && rm -rf qemu; \

@@ -4,6 +4,7 @@
 
 * devel: note why xilinx qemu stays on `2025.2`
 * devel: build xilinx qemu with LTO (~4% faster aarch64 emulation)
+* devel: build xilinx qemu in parallel
 
 ## 20260810 (latest)
 
