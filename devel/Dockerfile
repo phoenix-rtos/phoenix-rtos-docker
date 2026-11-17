@@ -42,6 +42,7 @@ RUN mkdir -p /etc/udev/rules.d && \
 
 # install qemu from xilinx
 # qemu xilinx doesn't support 32-bit architecture, skip armv7 architectures
+# --enable-lto: ~4% faster emulation (aarch64 coremark_pro + boot)
 # don't bump: xilinx_v2026.2 (QEMU 10.2) runs aarch64 tests ~13% slower, ~1.5x with -icount (2026.1.x is still 8.2.7)
 ARG DEVEL_XILINX_VERSION=2025.2
 RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ]; then \
@@ -49,7 +50,7 @@ RUN if [ "$TARGETPLATFORM" != "linux/arm/v7" ]; then \
         cd qemu && \
         git checkout tags/xilinx_v${DEVEL_XILINX_VERSION} && \
         mkdir build && cd build && \
-        ../configure --target-list="aarch64-softmmu" --enable-fdt --disable-kvm --disable-xen --enable-gcrypt --bindir="/usr/bin" --prefix="/usr" && \
+        ../configure --target-list="aarch64-softmmu" --enable-fdt --disable-kvm --disable-xen --enable-gcrypt --enable-lto --bindir="/usr/bin" --prefix="/usr" && \
         make && \
         strip --strip-unneeded aarch64-softmmu/qemu-system-aarch64 && \
         cp aarch64-softmmu/qemu-system-aarch64 /usr/bin && \
