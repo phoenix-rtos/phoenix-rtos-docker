@@ -97,6 +97,7 @@ RUN apt-get update && \
         uhubctl \
         libatomic1 \
         gdb-multiarch \
+        gh \
         net-tools \
     && rm -rf /var/lib/apt/lists/*
 
