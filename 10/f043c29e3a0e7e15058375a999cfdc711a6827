@@ -1,0 +1,19 @@
+CHANGELOG.md
+  s_36842d8b6e11a7::t_1524fb5e1a22a7 3,8,10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "10f043c29e3a0e7e15058375a999cfdc711a6827",
+  "prompts": {},
+  "sessions": {
+    "s_36842d8b6e11a7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2da18a91-1181-4985-9cee-32b9bc7c383a",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Marek Białowąs <marek.bialowas@phoenix-rtos.com>"
+    }
+  }
+}
