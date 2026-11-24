@@ -1,5 +1,9 @@
 # Changelog
 
+## NEXT VERSION
+
+* gh-runner: install gh
+
 ## 20261124 (latest)
 
 * phoenix-rtos-project commit: `0385169`
