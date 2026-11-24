@@ -1,0 +1,14 @@
+CHANGELOG.md
+  h_3689a52f3dab5f 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.4.2",
+  "base_commit_sha": "023239b10897d8f496920c8b67e83427a9479aa8",
+  "prompts": {},
+  "humans": {
+    "h_3689a52f3dab5f": {
+      "author": "Damian Loewnau <damian.loewnau@phoenix-rtos.com>"
+    }
+  }
+}
