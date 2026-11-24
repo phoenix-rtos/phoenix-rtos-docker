@@ -1,10 +1,11 @@
 # Changelog
 
-## NEXT VERSION
+## v3.4.0
 
 * devel: note why xilinx qemu stays on `2025.2`
 * devel: build xilinx qemu with LTO (~4% faster aarch64 emulation)
 * devel: build xilinx qemu in parallel
+* phoenix-rtos-project commit: `6d3d1d6`
 
 ## 20260810 (latest)
 
