@@ -1,5 +1,9 @@
 # Changelog
 
+## 20261124 (latest)
+
+* phoenix-rtos-project commit: `0385169`
+
 ## v3.4.0
 
 * devel: note why xilinx qemu stays on `2025.2`
@@ -7,7 +11,7 @@
 * devel: build xilinx qemu in parallel
 * phoenix-rtos-project commit: `6d3d1d6`
 
-## 20260810 (latest)
+## 20260810
 
 * build: install yacc
 * gh-runner: improve Dockerfile
