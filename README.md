@@ -115,3 +115,30 @@ docker push ghcr.io/phoenix-rtos/$IMAGE_NAME:$DATE
 # create new tag in the repo
 git tag -a $DATE -m "release: $DATE"
 ```
+
+### release images (`release/X.Y` branches)
+
+CI on `release/X.Y` branches of phoenix-rtos-project (`.github/workflows/ci-release.yml`) maps the branch name to
+the image tag `vX.Y` (major.minor only) and pulls `ghcr.io/phoenix-rtos/build:vX.Y` / `ghcr.io/phoenix-rtos/devel:vX.Y`.
+Until those exist, every CI run on the release branch fails with `manifest unknown`.
+
+* `PHOENIX_PROJECT_REF` - the `vX.Y.Z` tag. If the toolchain can't be built from the tag, use the first commit on
+  `release/X.Y` that has the needed backports and note it in `CHANGELOG.md`.
+* build `devel` on top of the freshly built release `build` image: `--build-arg BASE_IMAGE_VERSION=vX.Y.Z`.
+* tags, the same for `build` and `devel`, pushed to **both** ghcr.io and Docker Hub:
+  * `vX.Y` - used by CI, moved forward with every patch release,
+  * `vX.Y.Z` - immutable.
+* `latest` / `$DATE` / `amd64` are for master. Move them only after the image was also verified against
+  phoenix-rtos-project master.
+* tag the phoenix-rtos-docker commit with `vX.Y.Z`.
+* verify that the published images contain the expected phoenix-rtos-project commit:
+
+```bash
+REL=v3.4
+for img in ghcr.io/phoenix-rtos/build phoenixrtos/build; do
+    docker run --rm --pull always --entrypoint cat $img:$REL /opt/phoenix/git-version
+done
+for img in ghcr.io/phoenix-rtos/devel phoenixrtos/devel; do
+    docker run --rm --pull always --entrypoint cat $img:$REL /opt/phoenix/git-version /opt/phoenix/utils/git-version
+done
+```
